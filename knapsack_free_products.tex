@@ -494,8 +494,18 @@ $w_1,w_1^{-1},\ldots, w_k,w_k^{-1}$ gives a polynomial time reduction of $\IKP(G
 \section{Acyclic graph problem}\label{sec:agp}
 \medskip
 \noindent
-{\bf The acyclic graph problem $\AGP(G,X)$\index{$\AGP(G,X)$}:} Given $g\in G$ and an acyclic oriented graph $\Gamma$ labeled by words in $X\cup X^{-1}$, decide whether there is an oriented path in $\Gamma$ labeled by a word $w$ such that $w=g$ in $G$.
+{\bf The acyclic graph membership problem:} Given $g\in G$ and an acyclic oriented graph $\Gamma$ labeled by words in $X\cup X^{-1}$, decide whether there is an oriented path in $\Gamma$ labeled by a word $w$ such that $w=g$ in~$G$.
 
+\medskip
+Note that this problem $\P$-time reduces to the following.
+
+\medskip
+\noindent
+{\bf The acyclic graph problem $\AGP(G,X)$\index{$\AGP(G,X)$}:}
+Given an acyclic oriented graph $\Gamma$ labeled by letters in $X\cup X^{-1}\cup \{\varepsilon\}$ with two marked vertices, $\alpha$ and $\omega$, decide whether there is an oriented path in $\Gamma$ from $\alpha$ to $\omega$ labeled by a word $w$ such that $w=1$ in~$G$.
+
+\medskip
+Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$.  
 \begin{proposition}
 $\SSP(G),\ \KP(G),\ \BSMP(G)$ are $\P$-time reducible to $\AGP(G)$.
 \end{proposition}
@@ -505,10 +515,16 @@ $\SSP(G),\ \KP(G),\ \BSMP(G)$ are $\P$-time reducible to $\AGP(G)$.
 \begin{proposition}
 $\AGP(G)\in\P$ for every nilpotent group $G$.
 \end{proposition}
+\begin{proof}
+Similar to the proof Theorem~3.3 in~\cite{Miasnikov-Nikolaev-Ushakov:2012}.
+\end{proof}
 
 \begin{proposition}
 $\AGP(G)\in\P$ for every hyperbolic group $G$.
 \end{proposition}
+\begin{proof}
+The statement follows immediately from~\cite[Proposition 5.5]{Miasnikov-Nikolaev-Ushakov:2012}.
+\end{proof}
 
 
 \begin{proposition}
@@ -523,7 +539,22 @@ $\BSMP(F_2\times F_2)$.
 If $G,H$ are groups such that $\AGP(G),\AGP(H)\in\P$ then $\AGP(G*H)\in\P$.
 \end{theorem}
 \begin{proof}
-Draw $\varepsilon$-edges in the graph.
+Let $G$ be given by a generating set $X$, and $H$ by $Y$. Let $\Gamma=\Gamma_0$ be the given acyclic graph labeled by $\Sigma=X\cup X^{-1}\cup Y\cup Y^{-1}\cup\{\varepsilon\}$. Given the graph $\Gamma_k$, $k\in\mathbb Z$, construct graph $\Gamma_{k+1}$ by adding edges to $\Gamma_k$ as follows.
+
+Consider $\Gamma_{k}'$, the maximal subgraph of $\Gamma_k$ labeled by  $X\cup X^{-1}\cup \{\varepsilon\}$.
+For each pair of vertices $v_1,v_2\in V(\Gamma_k)$, decide whether a word equal to $1$ in $G$ is readable as a label of an oriented path in $\Gamma_k'$, using polynomial time solution to $\AGP(G,X)$.
+Let $E$ be the set of pairs $(v_1,v_2)\in V(\Gamma_k)\times V(\Gamma_k)$ such that the answer to the above question is positive, and there is no edge $v_1\overset{\varepsilon}{\to}v_2$ in $\Gamma_k.$ Construct the graph $\overline{\Gamma}_k$ by adding edges  $v_1\overset{\varepsilon}{\to}v_2$, $(v_1,v_2)\in E$ to the graph $\Gamma_k$.
+Now consider the maximal subgraph $\Gamma_k''$ of $\overline{\Gamma}_k$ labeled by $Y\cup Y^{-1}\cup \{\varepsilon\}$ and perform similar operation using polynomial time solution to $\AGP(H,Y)$, obtaining the graph $\overline{\overline{\Gamma}}_k=\Gamma_{k+1}$.
+Note that by the construction, $\size(\Gamma_{k+1})<2\size(\Gamma)$.
+
+We claim that a word $w$ equal to $1$ in $G*H$ is readable from $\alpha$ to $\omega$ in $\Gamma$ if and only if there is an edge $\alpha\overset{\varepsilon}{\to}\omega$ in the graph $\Gamma_{\size(\Gamma)}$.
+Indeed, suppose there is a path in $\Gamma_k$ from $\alpha$ to $\omega$ labeled by a word $w=w_1w_2\cdots w_m$, with $w_j\in \Sigma$ and at least one nontrivial letter among $w_1,\ldots, w_m$, such that $w=1$ in $G*H$.
+The normal form theorem for free products guarantees that $w$ has a subword $w'=w_iw_{i+1}\cdots w_j$ of letters in $X\cup X^{-1}\cup \{\varepsilon\}$ or $Y\cup Y^{-1}\cup \{\varepsilon\}$ with $w'=1$ in $G$ or $H$, respectively, with at least one nontrivial letter among $w_i,\ldots,w_j$.
+By the construction, the word $w_1\cdots w_{i-1}\varepsilon w_{j+1}\cdots w_m$ is readable as a label of a path in $\Gamma_{k+1}$ from $\alpha$ to $\omega$. Since the graph $\Gamma$ is acyclic, $m< \size(\Gamma)$.
+By induction, a word $\varepsilon^{<\size(\Gamma)}$ is readable as a label of an oriented path in $\Gamma_{\size(\Gamma)-1}$ from $\alpha$ to $\omega$.
+By the construction, $\Gamma_{\size(\Gamma)}$ contains an edge $\alpha\overset{\varepsilon}{\to}\omega$.
+The converse direction of the claim is evident.
+%Draw $\varepsilon$-edges in the graph.
 \end{proof}
 \begin{corollary}
 $\SSP$, $\KP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of nilpotent and hyperbolic groups in any finite amount.

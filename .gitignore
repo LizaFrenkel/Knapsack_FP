@@ -1,16 +1,16 @@
 #################
 ## LaTeX
 #################
-.aux
-.bbl
-.blg
-.dvi
-.log
-.out
-.pdf
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.out
+knapsack*.pdf
 *.synctex.gz
-.toc
-.ps
+*.toc
+*.ps
 
 
 

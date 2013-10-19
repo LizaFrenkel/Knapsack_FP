@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{srcltx}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 %\usepackage{pst-plot}
 %\usepackage{pst-text}
@@ -92,14 +93,14 @@ We study complexity of knapsack and related problem in free products of groups.
 
 
 \subsection{Motivation}\label{sub:motivation}
-In this paper, following~\cite{MNU1}  we continue the research on  non-commutative discrete (combinatorial) optimization. Specifically, we set out to study the properties of the subset sum problem in free products of groups. It turns out that so-called knapsack-type problems such as the aforementioned subset sum problem, knapsack problem, and bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion. Thus our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
+In this paper, following~\cite{MNU1}  we continue the research on  non-commutative discrete (combinatorial) optimization. Specifically, we set out to study the properties of the subset sum problem in free products of groups. It turns out that so-called knapsack-type problems such as the aforementioned subset sum problem, the knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion. Thus our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
 
 We refer to~\cite{MNU1,MNU2} for the initial motivation for the study of non-commutative discrete optimization, the set-up of the problems, and initial facts on non-commutative discrete optimization.
 
 \subsection{Results and open questions}\label{sub:results}
 As we said in the preceding section, we investigate properties of the subset problem in groups ($\SSP$). In the context of our study, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$) (see Section~\ref{sec:problems} for definitions), as special cases of a more general discrete optimization problem formulated in terms of graphs labeled by group elements, which we termed the {\em acyclic graph problem} ($\AGP$).
 
-We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$).
+We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). Finally, we observe that $\KP$ in a free product $\P$-time reduces to $\BKP$.
 
 It remains an open question whether there is a group with polynomial time $\SSP$ but $\AGP$ is $\NP$-hard.
 
@@ -512,32 +513,44 @@ Given an acyclic oriented graph $\Gamma$ labeled by letters in $X\cup X^{-1}\cup
 
 \medskip
 Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$.  
-\begin{proposition}
+\begin{proposition}\label{pr:reduction_to_agp}
 $\SSP(G),\ \BKP(G),\ \BSMP(G)$ are $\P$-time reducible to $\AGP(G)$.
 \end{proposition}
-\begin{proof} Draw graphs.
+\begin{proof} Let $w_1,w_2,\ldots, w_k, w$ be an input of $\SSP(G)$. Consider the graph $\Gamma=\Gamma(w_1,w_2,\ldots,w_k,w)$ shown in the Fig.~\ref{fi:SSP}. We see immediately that $(w_1,\ldots,w_k,w)$ is a positive instance of $\SSP(G)$ if and only if $\Gamma$ is a positive instance of $\AGP(G)$.
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=4.5in]{ssp.pdf}
+ \caption{Graph $\Gamma(w_1,w_2,\ldots,w_k,w)$, Proposition~\ref{pr:reduction_to_agp}.}\label{fi:SSP}
+\end{figure}
+Since that $\BKP(G)$ $\P$-time reduces to $\SSP(G)$ (see~\cite{MNU1}), it is only left to prove that $\BSMP(G)$ reduces to $\AGP(G)$. Indeed, let $(w_1,w_2,\ldots,w_k,w,1^n)$ be an input of $\BSMP(G)$. Consider the graph $\Delta=\Delta(w_1,w_2,\ldots,w_k,w,1^n)$ shown in the Fig.~\ref{fi:BSMP}.
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=4.5in]{bsmp.pdf}
+ \caption{Graph $\Delta(w_1,w_2,\ldots,w_k,w,1^n)$, Proposition~\ref{pr:reduction_to_agp}. There are $n+2$ vertices in the graph.}\label{fi:BSMP}
+\end{figure}
 \end{proof}
 
-\begin{proposition}
-$\AGP(G)\in\P$ for every nilpotent group $G$.
+While it still remains to be seen $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$.
+\begin{proposition}\label{pr:agp_nilp}
+$\AGP(G)\in\P$ for every virtually nilpotent group $G$.
 \end{proposition}
 \begin{proof}
-Similar to the proof Theorem~3.3 in~\cite{MNU1}.
+Follows immediately from polynomial growth of virtually nilpotent functions~\cite{Wolf}, similar to the proof Theorem~3.3 in~\cite{MNU1}.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{pr:agp_hyp}
 $\AGP(G)\in\P$ for every hyperbolic group $G$.
 \end{proposition}
 \begin{proof}
 The statement follows immediately from~\cite[Proposition 5.5]{MNU1}.
 \end{proof}
 
-
+Now note that while we show in the next section that free product preserves polynomial time $\AGP$, the direct product of groups may change the complexity of $\AGP$ dramatically.
 \begin{proposition}
 There exist groups $G,H$ such that $\AGP(G),\AGP(H)\in\P$, but $\AGP(G\times H)$ is $\NP$-complete.
 \end{proposition}
 \begin{proof}
-$\BSMP(F_2\times F_2)$.
+It was shown in~\cite[Theorem 7.4]{MNU1} that $\BSMP(F_2\times F_2)$ is $\NP$-complete. By Proposition~\ref{pr:reduction_to_agp} it follows that $\AGP(F_2\times F_2)$ is $\NP$-complete, while by Proposition~\ref{pr:agp_nilp} $\AGP(F_2)\in\P$.
 \end{proof}
 
 \section{$\AGP$ in free products}\label{sec:free_prod}
@@ -563,7 +576,7 @@ The converse direction of the claim is evident.
 %Draw $\varepsilon$-edges in the graph.
 \end{proof}
 \begin{corollary}
-$\SSP$, $\KP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of nilpotent and hyperbolic groups in any finite amount.
+$\SSP$, $\KP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of virtually nilpotent and hyperbolic groups in any finite amount.
 \end{corollary}
 
 \section{Knapsack problem in free products}\label{sec:knapsack}

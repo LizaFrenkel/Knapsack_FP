@@ -53,6 +53,8 @@
 \def\BSMOP{{\mathbf{BSMOP}}}
 \def\BGWP{{\mathbf{BGWP}}}
 \def\AGP{{\mathbf{AGP}}}
+\def\dumb{simple} %short? basic? tame?
+\def\nondumb{non-simple} %long? essential?
 
 \title{Knapsack problems in free products of groups}
 
@@ -532,14 +534,14 @@ Since that $\BKP(G)$ $\P$-time reduces to $\SSP(G)$ (see~\cite{MNU1}), it is onl
 
 While it still remains to be seen $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$.
 \begin{proposition}\label{pr:agp_nilp}
-$\AGP(G)\in\P$ for every virtually nilpotent group $G$.
+$\AGP(G)\in\P$ for every finitely generated virtually nilpotent group $G$.
 \end{proposition}
 \begin{proof}
 Follows immediately from polynomial growth of virtually nilpotent functions~\cite{Wolf}, similar to the proof Theorem~3.3 in~\cite{MNU1}.
 \end{proof}
 
 \begin{proposition}\label{pr:agp_hyp}
-$\AGP(G)\in\P$ for every hyperbolic group $G$.
+$\AGP(G)\in\P$ for every finitely generated hyperbolic group $G$.
 \end{proposition}
 \begin{proof}
 The statement follows immediately from~\cite[Proposition 5.5]{MNU1}.
@@ -560,11 +562,11 @@ If $G,H$ are groups such that $\AGP(G),\AGP(H)\in\P$ then $\AGP(G*H)\in\P$.
 \begin{proof}
 Let $G$ be given by a generating set $X$, and $H$ by $Y$. Let $\Gamma=\Gamma_0$ be the given acyclic graph labeled by $\Sigma=X\cup X^{-1}\cup Y\cup Y^{-1}\cup\{\varepsilon\}$. Given the graph $\Gamma_k$, $k\in\mathbb Z$, construct graph $\Gamma_{k+1}$ by adding edges to $\Gamma_k$ as follows.
 
-Consider $\Gamma_{k}'$, the maximal subgraph of $\Gamma_k$ labeled by  $X\cup X^{-1}\cup \{\varepsilon\}$.
+Consider $\Gamma_{k}'$, the maximal subgraph of $\Gamma_k$ labeled by  $X\cup X^{-1}\cup \{\varepsilon\}$ (i.e. the graph obtained by removing all edges labeled by $Y\cup Y^{-1}$).
 For each pair of vertices $v_1,v_2\in V(\Gamma_k)$, decide whether a word equal to $1$ in $G$ is readable as a label of an oriented path in $\Gamma_k'$, using polynomial time solution to $\AGP(G,X)$.
 Let $E$ be the set of pairs $(v_1,v_2)\in V(\Gamma_k)\times V(\Gamma_k)$ such that the answer to the above question is positive, and there is no edge $v_1\overset{\varepsilon}{\to}v_2$ in $\Gamma_k.$ Construct the graph $\overline{\Gamma}_k$ by adding edges  $v_1\overset{\varepsilon}{\to}v_2$, $(v_1,v_2)\in E$ to the graph $\Gamma_k$.
 Now consider the maximal subgraph $\Gamma_k''$ of $\overline{\Gamma}_k$ labeled by $Y\cup Y^{-1}\cup \{\varepsilon\}$ and perform similar operation using polynomial time solution to $\AGP(H,Y)$, obtaining the graph $\overline{\overline{\Gamma}}_k=\Gamma_{k+1}$.
-Note that by the construction, $\size(\Gamma_{k+1})<2\size(\Gamma)$.
+Note that by the construction, $\size(\Gamma_{k+1})<2\size(\Gamma)^2$.
 
 We claim that a word $w$ equal to $1$ in $G*H$ is readable from $\alpha$ to $\omega$ in $\Gamma$ if and only if there is an edge $\alpha\overset{\varepsilon}{\to}\omega$ in the graph $\Gamma_{\size(\Gamma)}$.
 Indeed, suppose there is a path in $\Gamma_k$ from $\alpha$ to $\omega$ labeled by a word $w=w_1w_2\cdots w_m$, with $w_j\in \Sigma$ and at least one nontrivial letter among $w_1,\ldots, w_m$, such that $w=1$ in $G*H$.
@@ -576,10 +578,37 @@ The converse direction of the claim is evident.
 %Draw $\varepsilon$-edges in the graph.
 \end{proof}
 \begin{corollary}
-$\SSP$, $\KP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of virtually nilpotent and hyperbolic groups in any finite amount.
+$\SSP$, $\KP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite amount.
 \end{corollary}
 
 \section{Knapsack problem in free products}\label{sec:knapsack}
+For an element $f$ of a free product of groups $G*H$, let $\|f\|$ denote the {\em syllable length} of $f$, i.e. its geodesic length in generators $G\cup H$ of $G*H$. We say that $f$ is {\em \dumb} if $f$ can be conjugated by an element of $G*H$ into $G\cup H$, i.e. $f=u^{-1}f'u$ where $u\in G*H, \|f'\|\le 1$. Otherwise, we say that $f$ is {\em \nondumb}.
+
+\begin{lemma}\label{le:power}
+Let $G,H$ be groups and let an element $f\in G\ast H$ be \nondumb.
+%, $f\notin\bigcup_{u\in G*H} G^u\cup H^u$.
+Then there are $a_1,\ldots,a_r\in G\cup H$, $b_1,\ldots,b_s\in G\cup H$, $c_1,\ldots,c_t\in G\cup H$, $r,t\le 2\|f\|$, $s\le \|f\|$, such that for every integer $n\ge 3$ the normal form of $f^n$ is
+$$
+a_1\cdots a_r(b_1\cdots b_s)^{n-2}c_1\cdots c_t.
+$$
+\end{lemma}
+\begin{proof} Follows from the normal form theorem for free products.
+\end{proof}
+
+The statement below is, in some sense, a strengthened big-powers condition for a free product.
+\begin{proposition}
+There exists a polynomial $p(x)$ with the following property. Let $G,H$ be groups. If for $f_1,f_2,\ldots, f_m, f\in G*H$ there exist non-negative integers $n_1,n_2,\ldots,n_m\in\mathbb Z$ such that
+$$
+f_1^{n_1}f_2^{n_2}\cdots f_m^{n_m}=f
+$$
+then there exist such integers $n_1,\ldots,n_m$ with
+$$n_i\le p(\|f_1\|+\|f_2\|+\ldots+\|f_m\|+\|f\|)\mbox{ whenever } f_i\mbox{ is \nondumb}.
+$$
+%for each $i$ such that $f_i$ is \nondumb.
+\end{proposition}
+\begin{proof}
+For each \nondumb\ $f_i$ pass to the form of $f_i^{n_i}$ provided by Lemma~\ref{le:power}. Then inspect the equality in the Cayley graph of $G*H$ with respect to generators $G\cup H$, use pigeonhole principle to find large mutually cancelling pieces of $f_i^{n_i}$ and some $f_j^{n_j}$.
+\end{proof}
 
 \begin{proposition}
 If $G,H$ are groups such that $\KP(G),\KP(H)\in\P$, then $\KP(G*H)$ is $\P$-time reducible to $\BKP(G*H)$.

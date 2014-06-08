@@ -74,11 +74,9 @@ Moscow, Russia}
 
 \thanks{The work of the third author was partially supported by NSF grant DMS-0914773.}
 
+
+
 \begin{document}
-
-
-\maketitle
-
 \begin{abstract}
 We study complexity of knapsack and related problem in free products of groups.
 
@@ -88,6 +86,8 @@ We study complexity of knapsack and related problem in free products of groups.
 \noindent
 {\bf 2010 Mathematics Subject Classification.} 03D15, 20F65, 20F10.
 \end{abstract}
+\maketitle
+
 
 \tableofcontents
 
@@ -532,7 +532,7 @@ Since that $\BKP(G)$ $\P$-time reduces to $\SSP(G)$ (see~\cite{MNU1}), it is onl
 \end{figure}
 \end{proof}
 
-While it still remains to be seen $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$.
+While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$.
 \begin{proposition}\label{pr:agp_nilp}
 $\AGP(G)\in\P$ for every finitely generated virtually nilpotent group $G$.
 \end{proposition}
@@ -582,12 +582,16 @@ $\SSP$, $\KP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of
 \end{corollary}
 
 \section{Knapsack problem in free products}\label{sec:knapsack}
-For an element $f$ of a free product of groups $G*H$, let $\|f\|$ denote the {\em syllable length} of $f$, i.e. its geodesic length in generators $G\cup H$ of $G*H$. We say that $f$ is {\em \dumb} if $f$ can be conjugated by an element of $G*H$ into $G\cup H$, i.e. $f=u^{-1}f'u$ where $u\in G*H, \|f'\|\le 1$. Otherwise, we say that $f$ is {\em \nondumb}.
+For an element $f$ of a free product of groups $G*H$, let $\|f\|$ denote the {\em syllable length} of $f$, i.e. its geodesic length in generators $G\cup H$ of $G*H$. We say that $f$ is {\em \dumb} if $f$ can be conjugated by an element of $G*H$ into $G\cup H$, i.e.
+\begin{equation}\label{eq:simple}
+f=u^{-1}f'u,
+\end{equation}
+where $u\in G*H, \|f'\|\le 1$. Otherwise, we say that $f$ is {\em \nondumb}.
 
 \begin{lemma}\label{le:power}
 Let $G,H$ be groups and let an element $f\in G\ast H$ be \nondumb.
 %, $f\notin\bigcup_{u\in G*H} G^u\cup H^u$.
-Then there are $a_1,\ldots,a_r\in G\cup H$, $b_1,\ldots,b_s\in G\cup H$, $c_1,\ldots,c_t\in G\cup H$, $r,t\le 2\|f\|$, $s\le \|f\|$, such that for every integer $n\ge 3$ the normal form of $f^n$ is
+Then there are $a_1,\ldots,a_r\in G\cup H$, $b_1,\ldots,b_s\in G\cup H$, $c_1,\ldots,c_t\in G\cup H$, $r+t\le 2\|f\|$, $s\le \|f\|$, such that for every integer $n\ge 3$ the normal form of $f^n$ is
 $$
 a_1\cdots a_r(b_1\cdots b_s)^{n-2}c_1\cdots c_t.
 $$
@@ -596,7 +600,7 @@ $$
 \end{proof}
 
 The statement below is, in some sense, a strengthened big-powers condition for a free product.
-\begin{proposition}
+\begin{proposition}\label{pr:big_power}
 There exists a polynomial $p(x)$ with the following property. Let $G,H$ be groups. If for $f_1,f_2,\ldots, f_m, f\in G*H$ there exist non-negative integers $n_1,n_2,\ldots,n_m\in\mathbb Z$ such that
 $$
 f_1^{n_1}f_2^{n_2}\cdots f_m^{n_m}=f
@@ -613,6 +617,34 @@ For each \nondumb\ $f_i$ pass to the form of $f_i^{n_i}$ provided by Lemma~\ref{
 \begin{proposition}
 If $G,H$ are groups such that $\KP(G),\KP(H)\in\P$, then $\KP(G*H)$ is $\P$-time reducible to $\BKP(G*H)$.
 \end{proposition}
+\begin{proof}
+Let $f_1,f_2,\ldots,f_m,f\in G*H$ be an input of $\KP(G*H)$. For each $f_i$, we can represent $f_i^{n_i}$ by their normal forms using Lemma~\ref{le:power} or simplicity of $f_i$. Suppose some $n_1,n_2,\ldots,n_m$ provide a solution to $\KP$, i.e. $f_1^{n_1}\cdots f_m^{n_m}f^{-1}=1$ in $G*H$. Representing $f^{-1}$ and each $f_i^{n_i}$ by their normal forms and combining like terms we obtain (without loss of generality) a product
+\begin{equation}\label{eq:norm_form}
+g_1h_1g_2h_2\cdots g_kh_k=1,
+\end{equation}
+where each $g_i\in G$ and each $h_i\in H$, and $k\le \|f\|+m\cdot (\max\{\|f_i\|\})\cdot p(\max\{\|f_i\|\})$ by Proposition~\ref{pr:big_power}, so $k\le N^2p(N)$ where $N$ is the total length of the input. Further, since the product in~\eqref{eq:norm_form} represents the trivial element, it can be reduced to $1$ by a series of eliminations of trivial syllables and combining like terms:
+\begin{align*}
+g_1h_1g_2h_2\cdots g_kh_k&=\\
+g_1^{(1)}h_1^{(1)}\cdots g_k^{(1)}h_k^{(1)}&=\\
+g_1^{(2)}h_1^{(2)}\cdots g_{k-1}^{(2)}h_{k-1}^{(2)}&=\\
+\ldots=g_1^{(k)}h_1^{(k)}&=1,\\
+\end{align*}
+where the product labeled by $(j)$ is obtained from the one labeled by $(j-1)$ by a single elimination of a trivial term and combining the two (cyclically) neighboring terms. Observe that each $g_i^{(j)}$ is (up to a cyclic shift) a product of the form $g_\alpha g_{\alpha+1}\cdots g_\beta$; similarly for $h_i^{(j)}$. Therefore, each $g_i^{(j)}$ is of the form
+\begin{equation}\label{eq:g_ij}
+g_i^{(j)}=a_1^{\delta_1} a_2^{\delta_2}\cdots a_{k_{ij}}^{\delta_{k_{ij}}},
+\end{equation}
+where each $a_\mu$, $1\le \mu\le k_{ij}$ is either
+\begin{itemize}
+\item[(NS)] one of the syllables involved in Lemma~\ref{le:power} or ``u'' part of~\eqref{eq:simple}, in which case $\delta_\mu=1$, or
+\item[(S)]\label{li:simple} the syllable $f'$ in~\eqref{eq:simple} for some $f_\nu$, in which case $\delta_\mu=n_\nu$.
+\end{itemize}
+Finally, note that by~\eqref{eq:g_ij} for each $j$, $k_{1j}+k_{2j}+\cdots +k_{k-j+1,j}\le Nk\le N^3p(N)$.
+
+Now, given the equality $g_i^{(j)}=1$ for some $i,j$, if the option~(S) takes place for any $1\le \mu\le k_{ij}$, then the corresponding equality can be represented as a positive instance of the $\KP(G)$ with input of length bounded by $(N k_{ij})^2\le N^6p^2(N)$. Since $\KP(G)\in\P$, it follows that every $n_\nu$ that occurs as some $\delta_\mu$ in some $g_i^{(j)}$ is bounded by a polynomial $p_G(N)$. Similar argument takes place for the $H$-syllables $h_i^{(j)}$, resulting in a polynomial bound $p_H(N)$.
+
+It is only left to note that since for every $1\le \nu\le m$, either $f_\nu$ is non-simple and then $n_\nu$ is bounded by $p(N)$, or it is simple and then $n_\nu$ is bounded by $p_G(N)$ or $p_H(N)$, so every $n_\nu$ is bounded by $p(N)+p_G(N)+p_H(N)$.
+%we note that each $g_i$ has the form 
+\end{proof}
 
 
 %\bibliography{../../main_bibliography}

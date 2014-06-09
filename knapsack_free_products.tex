@@ -102,7 +102,7 @@ We refer to~\cite{MNU1,MNU2} for the initial motivation for the study of non-com
 \subsection{Results and open questions}\label{sub:results}
 As we said in the preceding section, we investigate properties of the subset problem in groups ($\SSP$). In the context of our study, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$) (see Section~\ref{sec:problems} for definitions), as special cases of a more general discrete optimization problem formulated in terms of graphs labeled by group elements, which we termed the {\em acyclic graph problem} ($\AGP$).
 
-We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). Finally, we observe that $\KP$ in a free product $\P$-time reduces to $\BKP$.
+We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). Finally, we observe that $\KP$ in a free product $\P$-time reduces to $\BKP$, which allows to conclude that assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
 
 It remains an open question whether there is a group with polynomial time $\SSP$ but $\AGP$ is $\NP$-hard.
 
@@ -556,7 +556,7 @@ It was shown in~\cite[Theorem 7.4]{MNU1} that $\BSMP(F_2\times F_2)$ is $\NP$-co
 \end{proof}
 
 \section{$\AGP$ in free products}\label{sec:free_prod}
-\begin{theorem}
+\begin{theorem}\label{th:ptime_agp}
 If $G,H$ are groups such that $\AGP(G),\AGP(H)\in\P$ then $\AGP(G*H)\in\P$.
 \end{theorem}
 \begin{proof}
@@ -578,7 +578,7 @@ The converse direction of the claim is evident.
 %Draw $\varepsilon$-edges in the graph.
 \end{proof}
 \begin{corollary}
-$\SSP$, $\KP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite amount.
+$\SSP$, $\BKP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite amount.
 \end{corollary}
 
 \section{Knapsack problem in free products}\label{sec:knapsack}
@@ -614,7 +614,7 @@ $$
 For each \nondumb\ $f_i$ pass to the form of $f_i^{n_i}$ provided by Lemma~\ref{le:power}. Then inspect the equality in the Cayley graph of $G*H$ with respect to generators $G\cup H$, use pigeonhole principle to find large mutually cancelling pieces of $f_i^{n_i}$ and some $f_j^{n_j}$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{pr:kp_to_bkp}
 If $G,H$ are groups such that $\KP(G),\KP(H)\in\P$, then $\KP(G*H)$ is $\P$-time reducible to $\BKP(G*H)$.
 \end{proposition}
 \begin{proof}
@@ -644,8 +644,17 @@ Now, given the equality $g_i^{(j)}=1$ for some $i,j$, if the option~(S) takes pl
 
 It is only left to note that since for every $1\le \nu\le m$, either $f_\nu$ is non-simple and then $n_\nu$ is bounded by $p(N)$, or it is simple and then $n_\nu$ is bounded by $p_G(N)$ or $p_H(N)$, so every $n_\nu$ is bounded by $p(N)+p_G(N)+p_H(N)$.
 %we note that each $g_i$ has the form 
+% % does this really give algorithmic reduction? Do we have to be able to find p_G,p_H effectively?
 \end{proof}
 
+\begin{theorem}\label{th:ptime_kp}
+If $G,H$ are groups such that $\AGP(G)$, $\AGP(H)\in\P$ and $\KP(G)$, $\KP(H)\in\P$ then $\KP(G*H)\in\P$.
+\end{theorem}
+\begin{proof} By Proposition~\ref{pr:kp_to_bkp} $\KP(G*H)$ is $\P$-time reducible to $\BKP(G*H)$. In turn, the latter is $\P$-time reducible to $\AGP(G*H)$ by Proposition~\ref{pr:reduction_to_agp}. Finally, $\AGP(G*H)\in\P$ by Theorem~\ref{th:ptime_agp}. 
+\end{proof}
+\begin{corollary}
+$\KP$ is polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite amount.
+\end{corollary}
 
 %\bibliography{../../main_bibliography}
 \bibliography{main_bibliography}

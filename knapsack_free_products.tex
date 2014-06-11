@@ -75,7 +75,6 @@ Moscow, Russia}
 \thanks{The work of the third author was partially supported by NSF grant DMS-0914773.}
 
 
-
 \begin{document}
 \begin{abstract}
 We study complexity of knapsack and related problem in free products of groups.
@@ -105,6 +104,8 @@ As we said in the preceding section, we investigate properties of the subset pro
 We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). Finally, we observe that $\KP$ in a free product $\P$-time reduces to $\BKP$, which allows to conclude that assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
 
 It remains an open question whether there is a group with polynomial time $\SSP$ but $\AGP$ is $\NP$-hard.
+
+The authors are grateful to A.Miasnikov for insightful advice and discussions.
 
 \section{Preliminaries}\label{sec:prelim}\label{sec:problems}
 
@@ -151,7 +152,7 @@ g = g_{i_1}, \ldots, g_{i_s}.
 \end{equation}
 
 \medskip
-The restriction of $\SMP$ to the case when the set of generators $\{g_1, \ldots,g_n\}$ is closed under inversion (so the submonoid is actually a subgroup of $G$) is  a well-known problem in group theory, called the {\em generalized word problem} ($\GWP$) or the {\em uniform subgroup membership problem} in $G$.
+The restriction of $\SMP$ to the case when the set of generators $\{g_1, \ldots,g_n\}$ is closed under inversion (so the submonoid is actually a subgroup of $G$) is  a well-known problem in group theory, called the {\em uniform generalized word problem} ($\GWP$) or the {\em uniform subgroup membership problem} in $G$.
 %There is a huge bibliography on this subject, we mention some related results  in Section \ref{sec:results}.
 
 As usual in complexity theory, it makes sense to consider the {\em bounded} versions of $\KP$ and $\SMP$, at least they are always decidable in groups where the word problem is decidable. In this case the problem is to verify  if the corresponding equalities (\ref{eq:IKP-def}) and  (\ref{eq:SMP-def}) hold for a given $g$ provided that the number of factors in these equalities  is bounded by a natural number $m$ which is given in the unary form, i.e., as the word $1^m$. In particular, the bounded knapsack problem ($\BKP$) for a group $G$ asks to decide, when  given $g_1,\ldots,g_k,g\in G$ and $1^m\in\mathbb N$, if the equality (\ref{eq:IKP-def}) holds for some
@@ -563,7 +564,7 @@ If $G,H$ are groups such that $\AGP(G),\AGP(H)\in\P$ then $\AGP(G*H)\in\P$.
 Let $G$ be given by a generating set $X$, and $H$ by $Y$. Let $\Gamma=\Gamma_0$ be the given acyclic graph labeled by $\Sigma=X\cup X^{-1}\cup Y\cup Y^{-1}\cup\{\varepsilon\}$. Given the graph $\Gamma_k$, $k\in\mathbb Z$, construct graph $\Gamma_{k+1}$ by adding edges to $\Gamma_k$ as follows.
 
 Consider $\Gamma_{k}'$, the maximal subgraph of $\Gamma_k$ labeled by  $X\cup X^{-1}\cup \{\varepsilon\}$ (i.e. the graph obtained by removing all edges labeled by $Y\cup Y^{-1}$).
-For each pair of vertices $v_1,v_2\in V(\Gamma_k)$, decide whether a word equal to $1$ in $G$ is readable as a label of an oriented path in $\Gamma_k'$, using polynomial time solution to $\AGP(G,X)$.
+For each pair of vertices $v_1,v_2\in V(\Gamma_k)$ from the same connected component of $\Gamma_k$, decide whether a word equal to $1$ in $G$ is readable as a label of an oriented path in $\Gamma_k'$, using polynomial time solution to $\AGP(G,X)$.
 Let $E$ be the set of pairs $(v_1,v_2)\in V(\Gamma_k)\times V(\Gamma_k)$ such that the answer to the above question is positive, and there is no edge $v_1\overset{\varepsilon}{\to}v_2$ in $\Gamma_k.$ Construct the graph $\overline{\Gamma}_k$ by adding edges  $v_1\overset{\varepsilon}{\to}v_2$, $(v_1,v_2)\in E$ to the graph $\Gamma_k$.
 Now consider the maximal subgraph $\Gamma_k''$ of $\overline{\Gamma}_k$ labeled by $Y\cup Y^{-1}\cup \{\varepsilon\}$ and perform similar operation using polynomial time solution to $\AGP(H,Y)$, obtaining the graph $\overline{\overline{\Gamma}}_k=\Gamma_{k+1}$.
 Note that by the construction, $\size(\Gamma_{k+1})<2\size(\Gamma)^2$.
@@ -613,6 +614,7 @@ $$
 \begin{proof}
 For each \nondumb\ $f_i$ pass to the form of $f_i^{n_i}$ provided by Lemma~\ref{le:power}. Then inspect the equality in the Cayley graph of $G*H$ with respect to generators $G\cup H$, use pigeonhole principle to find large mutually cancelling pieces of $f_i^{n_i}$ and some $f_j^{n_j}$.
 \end{proof}
+We assume without loss of generality that $p$ in the above proposition is monotone on $\mathbb{Z}_{\ge 0}$.
 
 \begin{proposition}\label{pr:kp_to_bkp}
 If $G,H$ are groups such that $\KP(G),\KP(H)\in\P$, then $\KP(G*H)$ is $\P$-time reducible to $\BKP(G*H)$.
@@ -620,27 +622,31 @@ If $G,H$ are groups such that $\KP(G),\KP(H)\in\P$, then $\KP(G*H)$ is $\P$-time
 \begin{proof}
 Let $f_1,f_2,\ldots,f_m,f\in G*H$ be an input of $\KP(G*H)$. For each $f_i$, we can represent $f_i^{n_i}$ by their normal forms using Lemma~\ref{le:power} or simplicity of $f_i$. Suppose some $n_1,n_2,\ldots,n_m$ provide a solution to $\KP$, i.e. $f_1^{n_1}\cdots f_m^{n_m}f^{-1}=1$ in $G*H$. Representing $f^{-1}$ and each $f_i^{n_i}$ by their normal forms and combining like terms we obtain (without loss of generality) a product
 \begin{equation}\label{eq:norm_form}
-g_1h_1g_2h_2\cdots g_kh_k=1,
+g_1h_1g_2h_2\cdots g_\ell h_\ell=1,
 \end{equation}
-where each $g_i\in G$ and each $h_i\in H$, and $k\le \|f\|+m\cdot (\max\{\|f_i\|\})\cdot p(\max\{\|f_i\|\})$ by Proposition~\ref{pr:big_power}, so $k\le N^2p(N)$ where $N$ is the total length of the input. Further, since the product in~\eqref{eq:norm_form} represents the trivial element, it can be reduced to $1$ by a series of eliminations of trivial syllables and combining like terms:
+where each $g_i\in G$ and each $h_i\in H$, and $\ell\le \|f\|+m\cdot (\max\{\|f_i\|\})\cdot p(\max\{\|f_i\|\})$ by Proposition~\ref{pr:big_power}, so $\ell\le N^2p(N)$ where $N$ is the total length of the input (i.e. the sum of word lengths of $f_1,$ \ldots, $f_m,$ $f$). Further, since the product in~\eqref{eq:norm_form} represents the trivial element, it can be reduced to $1$ by a series of eliminations of trivial syllables and combining like terms:
 \begin{align*}
-g_1h_1g_2h_2\cdots g_kh_k&=\\
-g_1^{(1)}h_1^{(1)}\cdots g_k^{(1)}h_k^{(1)}&=\\
-g_1^{(2)}h_1^{(2)}\cdots g_{k-1}^{(2)}h_{k-1}^{(2)}&=\\
-\ldots=g_1^{(k)}h_1^{(k)}&=1,\\
+g_1h_1g_2h_2\cdots g_\ell h_\ell&=\\
+g_1^{(1)}h_1^{(1)}\cdots g_\ell^{(1)}h_\ell^{(1)}&=\\
+g_1^{(2)}h_1^{(2)}\cdots g_{\ell-1}^{(2)}h_{\ell-1}^{(2)}&=\\
+\ldots=g_1^{(\ell)}h_1^{(\ell)}&=1,\\
 \end{align*}
 where the product labeled by $(j)$ is obtained from the one labeled by $(j-1)$ by a single elimination of a trivial term and combining the two (cyclically) neighboring terms. Observe that each $g_i^{(j)}$ is (up to a cyclic shift) a product of the form $g_\alpha g_{\alpha+1}\cdots g_\beta$; similarly for $h_i^{(j)}$. Therefore, each $g_i^{(j)}$ is of the form
 \begin{equation}\label{eq:g_ij}
-g_i^{(j)}=a_1^{\delta_1} a_2^{\delta_2}\cdots a_{k_{ij}}^{\delta_{k_{ij}}},
+g_i^{(j)}=d_{1j}^{\delta_{1j}} d_{2j}^{\delta_{2j}}\cdots d_{k_{ij},j}^{\delta_{k_{ij},j}},
 \end{equation}
-where each $a_\mu$, $1\le \mu\le k_{ij}$ is either
+where each $d_{\mu j}$, $1\le \mu\le k_{ij}$ is either
 \begin{itemize}
-\item[(NS)] one of the syllables involved in Lemma~\ref{le:power} or ``u'' part of~\eqref{eq:simple}, in which case $\delta_\mu=1$, or
-\item[(S)]\label{li:simple} the syllable $f'$ in~\eqref{eq:simple} for some $f_\nu$, in which case $\delta_\mu=n_\nu$.
+\item[(NS)] one of the syllables involved in Lemma~\ref{le:power} or ``u'' part of~\eqref{eq:simple}, in which case $\delta_{\mu j}=1$, or
+\item[(S)]\label{li:simple} the syllable $f'$ in~\eqref{eq:simple} for some $f_\nu$, in which case $\delta_{\mu j}=n_\nu$.
 \end{itemize}
-Finally, note that by~\eqref{eq:g_ij} for each $j$, $k_{1j}+k_{2j}+\cdots +k_{k-j+1,j}\le Nk\le N^3p(N)$.
+On the one hand, the total amount of syllables $d_{\mu j}$ involved in~\eqref{eq:g_ij} for a fixed $j$ is $k_{1j}+k_{2j}+\cdots +k_{\ell-j+1,j}$. On the other hand, it cannot exceed $k_{11}+k_{21}+\cdots +k_{\ell 1}$
+since $g_1^{(j)}$, $g_2^{(j)},$ \ldots, $g_{\ell-j+1}^{(j)}$ is obtained by eliminating and combining elements $g_1$, $g_2$, \ldots, $g_l$. Taking into account that each $k_{i1}\le m+1\le N$, we obtain $k_{1j}+k_{2j}+\cdots +k_{\ell-j+1,j}\le \ell N\le N^3p(N)$.
 
-Now, given the equality $g_i^{(j)}=1$ for some $i,j$, if the option~(S) takes place for any $1\le \mu\le k_{ij}$, then the corresponding equality can be represented as a positive instance of the $\KP(G)$ with input of length bounded by $(N k_{ij})^2\le N^6p^2(N)$. Since $\KP(G)\in\P$, it follows that every $n_\nu$ that occurs as some $\delta_\mu$ in some $g_i^{(j)}$ is bounded by a polynomial $p_G(N)$. Similar argument takes place for the $H$-syllables $h_i^{(j)}$, resulting in a polynomial bound $p_H(N)$.
+%total word length of the collection $g_1,\ldots, g_\ell$, 
+
+
+Now, given the equality $g_i^{(j)}=1$ for some $i,j$, if the option~(S) takes place for any $1\le \mu\le k_{ij}$, then the right hand side of the corresponding equality~\eqref{eq:g_ij} can be represented (via a standard conjugation procedure) as a positive instance of the $\KP(G)$ with input of length bounded by $(N k_{ij})^2\le N^8p^2(N)$. Since $\KP(G)\in\P$, it follows that every $n_\nu$ that occurs as some $\delta_{\mu j}$ in some $g_i^{(j)}$ is bounded by a polynomial $p_G(N)$. Similar argument takes place for the $H$-syllables $h_i^{(j)}$, resulting in a polynomial bound $p_H(N)$.
 
 It is only left to note that since for every $1\le \nu\le m$, either $f_\nu$ is non-simple and then $n_\nu$ is bounded by $p(N)$, or it is simple and then $n_\nu$ is bounded by $p_G(N)$ or $p_H(N)$, so every $n_\nu$ is bounded by $p(N)+p_G(N)+p_H(N)$.
 %we note that each $g_i$ has the form 

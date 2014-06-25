@@ -97,8 +97,7 @@ We study complexity of knapsack and related problem in free products of groups.
 In~\cite{MNU1}, authors introduce a number of certain decision, search and optimization algorithmic problems in groups, such as the subset sum problem, the knapsack problem, and the bounded submonoid membership problem. These problems are collectively referred to as {\em knapsack-type} problems and deal with different generalizations of the classical knapsack and subset sum problems over~$\mathbb Z$ to the case of arbitrary groups. In the same work, authors study time complexity of such problems for various classes of groups, for example nilpotent, metabelian, hyperbolic groups. With this collection of results in mind, it is natural to ask what is the effect of free group constructions on the complexity of knapsack-type problems. In the present paper we address this question in its basic variation, in the case of free products of groups.
 
 %In this paper, following~\cite{MNU1}  we continue the research on  non-commutative discrete (combinatorial) optimization. Specifically, we set out to study the properties of the subset sum problem in free products of groups.
-Typically, solutions to algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems such as the word, conjugacy and membership~\cite{Mihailova_68} problems.
-It turns out that knapsack-type problems such as the aforementioned subset sum problem, the knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion. Thus our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
+Typically, solutions to algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems in groups such as the word, conjugacy and membership~\cite{Mihailova_68} problems. In some sense, the same expectations are satisfied with knapsack-type problems, albeit not in an entirely straightforward fashion. It turns out that knapsack-type problems such as the aforementioned subset sum problem, the knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion, and to carry solutions of these problems over to free products. Thus our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
 
 We refer to~\cite{MNU1,MNU2} for the initial motivation for the study of non-commutative discrete optimization, the set-up of the problems, and initial facts on non-commutative discrete optimization.
 
@@ -537,7 +536,8 @@ Since that $\BKP(G)$ $\P$-time reduces to $\SSP(G)$ (see~\cite{MNU1}), it is onl
 \end{figure}
 \end{proof}
 
-While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$.
+While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$. We would also like to note that since the word problem straightforwardly reduces to $\AGP$, an obvious prerequisite for $\AGP(G)$ to belong to $\NP$ is to have a polynomial time word problem. Therefore, in the context of investigating time complexity of $\AGP$ we are primarily interested in such groups.
+
 \begin{proposition}\label{pr:agp_nilp}
 $\AGP(G)\in\P$ for every finitely generated virtually nilpotent group $G$.
 \end{proposition}
@@ -559,6 +559,20 @@ There exist groups $G,H$ such that $\AGP(G),\AGP(H)\in\P$, but $\AGP(G\times H)$
 \begin{proof}
 It was shown in~\cite[Theorem 7.4]{MNU1} that $\BSMP(F_2\times F_2)$ is $\NP$-complete. By Proposition~\ref{pr:reduction_to_agp} it follows that $\AGP(F_2\times F_2)$ is $\NP$-complete, while by Proposition~\ref{pr:agp_nilp} $\AGP(F_2)\in\P$.
 \end{proof}
+
+Other examples when $\AGP$ is $\NP$-complete include (see~\cite{MNU1}) certain metabelian groups (finitely generated free metabelian group, wreath products of two infinite abelian groups, Gilber Baumslag's group $GB=\langle a,s,t\mid [a,a^t]=1, [s,t]=1, a^s=aa^t\rangle$, Baumslag--Solitar groups $BS(m,n)$ with $|m|\neq |n|$, $m,n\neq 0$), Thompson's group $F$, $F_2\times F_2$, linear groups $GL(\ge4, \mathbb Z)$, braid groups, graph groups whose
+graph contains an induced square $C_4$.
+
+We also make a note of the following (obvious) property of $\AGP$.
+\begin{proposition}
+Let $G$ be a finitely generated group and $H\le G$ its finitely generated subgroup.
+\begin{enumerate}
+\item If $\AGP(H)$ is $\NP$-hard then $\AGP(G)$ is $\NP$-hard.
+\item If $\AGP(G)\in \P$ then $\AGP(H)\in \P$.
+\end{enumerate}
+\end{proposition}
+
+
 
 \section{$\AGP$ in free products}\label{sec:free_prod}
 \begin{theorem}\label{th:ptime_agp}

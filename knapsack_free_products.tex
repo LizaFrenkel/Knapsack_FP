@@ -94,7 +94,7 @@ We study complexity of knapsack and related problem in free products of groups.
 
 
 \subsection{Motivation}\label{sub:motivation}
-In~\cite{MNU1}, authors introduce a number of certain decision, search and optimization algorithmic problems in groups, such as the subset sum problem, the knapsack problem, and the bounded submonoid membership problem. These problems are collectively referred to as {\em knapsack-type} problems and deal with different generalizations of the classical knapsack and subset sum problems over~$\mathbb Z$ to the case of arbitrary groups. In the same work, authors study time complexity of such problems for various classes of groups, for example nilpotent, metabelian, hyperbolic groups. With this collection of results in mind, it is natural to ask what is the effect of free group constructions on the complexity of knapsack-type problems. In the present paper we address this question in its basic variation, in the case of free products of groups.
+In~\cite{MNU1}, the authors introduce a number of certain decision, search and optimization algorithmic problems in groups, such as the subset sum problem, the knapsack problem, and the bounded submonoid membership problem. These problems are collectively referred to as {\em knapsack-type} problems and deal with different generalizations of the classical knapsack and subset sum problems over~$\mathbb Z$ to the case of arbitrary groups. In the same work, the authors study time complexity of such problems for various classes of groups, for example nilpotent, metabelian, hyperbolic groups. With that collection of results in mind, it is natural to ask what is the effect of free group constructions on the complexity of knapsack-type problems. In the present paper we address this question in its basic variation, in the case of free products of groups.
 
 %In this paper, following~\cite{MNU1}  we continue the research on  non-commutative discrete (combinatorial) optimization. Specifically, we set out to study the properties of the subset sum problem in free products of groups.
 Typically, solutions to algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems in groups such as the word, conjugacy and membership~\cite{Mihailova_68} problems. In some sense, the same expectations are satisfied with knapsack-type problems, albeit not in an entirely straightforward fashion. It turns out that knapsack-type problems such as the aforementioned subset sum problem, the knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion, and to carry solutions of these problems over to free products. Thus our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
@@ -102,13 +102,13 @@ Typically, solutions to algorithmic problems carry over from groups to their fre
 We refer to~\cite{MNU1,MNU2} for the initial motivation for the study of non-commutative discrete optimization, the set-up of the problems, and initial facts on non-commutative discrete optimization.
 
 \subsection{Results and open questions}\label{sub:results}
-As we said in the preceding section, we investigate properties of the subset problem in groups ($\SSP$). In the context of our study, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$) (see Section~\ref{sec:problems} for definitions), as special cases of a more general algorithmic problem formulated in terms of graphs labeled by group elements, which we termed the {\em acyclic graph problem} ($\AGP$).
+As we said in the preceding section, we investigate properties of the subset problem ($\SSP$) in groups. In the context of our study, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$) (see Section~\ref{sec:problems} for definitions), as special cases of a more general algorithmic problem formulated in terms of graphs labeled by group elements, which we call the {\em acyclic graph problem} ($\AGP$).
 
-We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). Finally, we observe that $\KP$ in a free product $\P$-time reduces to $\BKP$, which allows to conclude that assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
+We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). Finally, we observe that knapsack problem ($\KP$) in a free product $\P$-time reduces to $\BKP$, which allows to conclude that assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
 
 It remains an open question whether there is a group with polynomial time $\SSP$ but $\AGP$ is $\NP$-hard.
 
-The authors are grateful to A.Miasnikov for insightful advice and discussions.
+The authors are grateful to A.~Miasnikov for bringing our attention to problem and for insightful advice and discussions.
 
 \section{Preliminaries}\label{sec:prelim}\label{sec:problems}
 
@@ -155,7 +155,7 @@ g = g_{i_1}, \ldots, g_{i_s}.
 \end{equation}
 
 \medskip
-The restriction of $\SMP$ to the case when the set of generators $\{g_1, \ldots,g_n\}$ is closed under inversion (so the submonoid is actually a subgroup of $G$) is  a well-known problem in group theory, called the {\em uniform generalized word problem} ($\GWP$) or the {\em uniform subgroup membership problem} in $G$.
+The restriction of $\SMP$ to the case when the set of generators $\{g_1, \ldots,g_n\}$ is closed under inversion (so the submonoid is actually a subgroup of $G$) is  a well-known problem in group theory, the {\em uniform subgroup membership problem} in $G$.
 %There is a huge bibliography on this subject, we mention some related results  in Section \ref{sec:results}.
 
 As usual in complexity theory, it makes sense to consider the {\em bounded} versions of $\KP$ and $\SMP$, at least they are always decidable in groups where the word problem is decidable. In this case the problem is to verify  if the corresponding equalities (\ref{eq:IKP-def}) and  (\ref{eq:SMP-def}) hold for a given $g$ provided that the number of factors in these equalities  is bounded by a natural number $m$ which is given in the unary form, i.e., as the word $1^m$. In particular, the bounded knapsack problem ($\BKP$) for a group $G$ asks to decide, when  given $g_1,\ldots,g_k,g\in G$ and $1^m\in\mathbb N$, if the equality (\ref{eq:IKP-def}) holds for some
@@ -505,12 +505,14 @@ For further information concerning knapsack-type problems and their variations i
 %\end{proof}
 
 \section{Acyclic graph problem}\label{sec:agp}
-\medskip
-\noindent
-{\bf The acyclic graph membership problem:} Given $g\in G$ and an acyclic oriented graph $\Gamma$ labeled by words in $X\cup X^{-1}$, decide whether there is an oriented path in $\Gamma$ labeled by a word $w$ such that $w=g$ in~$G$.
+Let $G$ be a group and $X=\{x_1,\ldots,x_n\}$ a generating set for $G$.
 
 \medskip
-Note that this problem $\P$-time reduces to the following.
+\noindent
+{\bf The acyclic graph membership problem:} Given $g\in G$ and an acyclic oriented graph $\Gamma$ labeled by words in $X\cup X^{-1}$, decide whether there is a directed path in $\Gamma$ labeled by a word $w$ such that $w=g$ in~$G$.
+
+\medskip
+Note that by exhaustively enumerating all pairs of vertices in $\Gamma$, this problem $\P$-time reduces to the following.
 
 \medskip
 \noindent
@@ -518,7 +520,11 @@ Note that this problem $\P$-time reduces to the following.
 Given an acyclic oriented graph $\Gamma$ labeled by letters in $X\cup X^{-1}\cup \{\varepsilon\}$ with two marked vertices, $\alpha$ and $\omega$, decide whether there is an oriented path in $\Gamma$ from $\alpha$ to $\omega$ labeled by a word $w$ such that $w=1$ in~$G$.
 
 \medskip
-Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$.  
+Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$. Let total word length of labels of edges of $\Gamma$ be $l$. For a given instance of $\AGP(G,X)$, its size is the value $m+n+l$.
+
+Note that by a standard argument, if $X_1$ and $X_2$ are two finite generating sets for a group $G$, the problems $\AGP(G,X_1)$ and $\AGP(G,X_2)$ are $\P$-time equivalent. In this sense, the complexity  of $\AGP$ in a group $G$ does not depend on the choice of a finite generating set. We note in passing that with infinite generating sets the situation is more involved and refer the reader to~\cite{MNU1} for details. In the sequel we will often write $\AGP(G)$ instead of $\AGP(G,X)$, implying an arbitrary finite generating set.
+
+ 
 \begin{proposition}\label{pr:reduction_to_agp}
 $\SSP(G),\ \BKP(G),\ \BSMP(G)$ are $\P$-time reducible to $\AGP(G)$.
 \end{proposition}
@@ -536,7 +542,8 @@ Since that $\BKP(G)$ $\P$-time reduces to $\SSP(G)$ (see~\cite{MNU1}), it is onl
 \end{figure}
 \end{proof}
 
-While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$. We would also like to note that since the word problem straightforwardly reduces to $\AGP$, an obvious prerequisite for $\AGP(G)$ to belong to $\NP$ is to have a polynomial time word problem. Therefore, in the context of investigating time complexity of $\AGP$ we are primarily interested in such groups.
+While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, in every case when it is known that those problems are $\P$-time, so is $\AGP$.
+Here we would also like to note that since the word problem straightforwardly reduces to $\AGP$, an obvious prerequisite for $\AGP(G)$ to belong to $\NP$ is for $G$ to have a polynomial time word problem. Therefore, in the context of investigating time complexity of $\AGP$ we are primarily interested in such groups.
 
 \begin{proposition}\label{pr:agp_nilp}
 $\AGP(G)\in\P$ for every finitely generated virtually nilpotent group $G$.
@@ -553,11 +560,11 @@ The statement follows immediately from~\cite[Proposition 5.5]{MNU1}.
 \end{proof}
 
 Now note that while we show in the next section that free product preserves polynomial time $\AGP$, the direct product of groups may change the complexity of $\AGP$ dramatically.
-\begin{proposition}
+\begin{proposition}\label{pr:agp_cross}
 There exist groups $G,H$ such that $\AGP(G),\AGP(H)\in\P$, but $\AGP(G\times H)$ is $\NP$-complete.
 \end{proposition}
 \begin{proof}
-It was shown in~\cite[Theorem 7.4]{MNU1} that $\BSMP(F_2\times F_2)$ is $\NP$-complete. By Proposition~\ref{pr:reduction_to_agp} it follows that $\AGP(F_2\times F_2)$ is $\NP$-complete, while by Proposition~\ref{pr:agp_nilp} $\AGP(F_2)\in\P$.
+It was shown in~\cite[Theorem 7.4]{MNU1} that $\BSMP(F_2\times F_2)$ is $\NP$-complete. By Proposition~\ref{pr:reduction_to_agp} it follows that $\AGP(F_2\times F_2)$ is $\NP$-complete, while by Proposition~\ref{pr:agp_hyp} $\AGP(F_2)\in\P$.
 \end{proof}
 
 Other examples when $\AGP$ is $\NP$-complete include (see~\cite{MNU1}) certain metabelian groups (finitely generated free metabelian group, wreath products of two infinite abelian groups, Gilber Baumslag's group $GB=\langle a,s,t\mid [a,a^t]=1, [s,t]=1, a^s=aa^t\rangle$, Baumslag--Solitar groups $BS(m,n)$ with $|m|\neq |n|$, $m,n\neq 0$), Thompson's group $F$, $F_2\times F_2$, linear groups $GL(\ge4, \mathbb Z)$, braid groups, graph groups whose

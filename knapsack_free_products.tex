@@ -106,7 +106,7 @@ As we said in the preceding section, we investigate properties of the subset pro
 
 We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We also observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). Finally, we observe that knapsack problem ($\KP$) in a free product $\P$-time reduces to $\BKP$, which allows to conclude that assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
 
-We establish reduction of $\AGP$ to $\SSP$, albeit in a different (extended) group (Propositions~\ref{pr:agp_to_ssp_star} and~\ref{pr:agp_to_ssp_cross}). As an application of this idea, we show that direct product does not preserve polynomial $\SSP$ (unless $\P=\NP$), i.e. that there are groups $G,H$ such that $\SSP(G),\SSP(H)\in \P$, but $\SSP(G\times H)$ is $\NP$-complete (Proposition~\ref{pr:NP_complete_ssp_cross}).
+We establish reduction of $\AGP$ to $\SSP$, albeit in a different (extended) group (Propositions~\ref{pr:agp_to_ssp_star} and~\ref{pr:agp_to_ssp_cross}). As an application of this idea, we show that direct product does not preserve polynomial $\SSP$ (unless $\P=\NP$), i.e. that there are groups $G,H$ such that $\SSP(G),\SSP(H)\in \P$, but $\SSP(G\times H)$ is $\NP$-complete (Corollary~\ref{cor:NP_complete_ssp_cross}).
 
 It remains an open question whether there is a group with polynomial time $\SSP$ but $\AGP$ is $\NP$-hard.
 
@@ -649,8 +649,8 @@ Combining Propositions~\ref{pr:agp_hyp} and~\ref{pr:ssp_cross}, we obtain at lea
 Other examples when $\AGP$ is $\NP$-complete include (see~\cite{MNU1}) certain metabelian groups (finitely generated free metabelian group, wreath products of two infinite abelian groups, Gilber Baumslag's group $GB=\langle a,s,t\mid [a,a^t]=1, [s,t]=1, a^s=aa^t\rangle$, Baumslag--Solitar groups $BS(m,n)$ with $|m|\neq |n|$, $m,n\neq 0$), Thompson's group $F$, $F_2\times F_2$, linear groups $GL(\ge4, \mathbb Z)$, braid groups, graph groups whose
 graph contains an induced square $C_4$.
 
-We also make a note of the following (obvious) property of $\AGP$.
-\begin{proposition}
+We make a note of the following (obvious) property of $\AGP$.
+\begin{proposition}\label{pr:subgroup}
 Let $G$ be a finitely generated group and $H\le G$ its finitely generated subgroup.
 \begin{enumerate}
 \item If $\AGP(H)$ is $\NP$-hard then $\AGP(G)$ is $\NP$-hard.
@@ -659,8 +659,11 @@ Let $G$ be a finitely generated group and $H\le G$ its finitely generated subgro
 \end{proposition}
 
 \begin{corollary}
-It follows from Proposition~\ref{pr:bsmp_to_ssp} that $\SSP$ is $\NP$-complete in braid groups $B_n$, $n\ge 8$, matrix groups $SL(n,\mathbb Z)$, $n\ge 5$, partially commutative groups containing $F_2\times F_2\times \mathbb Z$.
+$\SSP$ is $\NP$-complete in braid groups $B_n$, $n\ge 8$, special linear groups $SL(n,\mathbb Z)$, $n\ge 5$, graph groups whose graph contains an induced square pyramid.
 \end{corollary}
+\begin{proof}
+This follows from Propositions~\ref{pr:bsmp_to_ssp} and~\ref{pr:subgroup} since all of the listed groups contain $F_2\times F_2\times \mathbb Z$ as a subgroup.
+\end{proof}
 
 
 \section{$\AGP$ in free products}\label{sec:free_prod}

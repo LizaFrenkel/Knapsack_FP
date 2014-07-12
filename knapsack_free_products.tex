@@ -187,7 +187,7 @@ Recall that a decision problem $(I_1,D_1)$ is  {\em $\P$-time  reducible}
 to  a problem $(I_2,D_2)$ if there is a $\P$-time computable function
 $f:I_1  \to I_2$  such that for any $u \in I_1$ one has $u \in D_1 \Longleftrightarrow f(u) \in D_2$.
 Such reductions are usually called either {\em many-to-one} $\P$-time reductions or Karp reductions.
-Since we do not use any other reductions we omit ``many-to-one'' from the name and call them $\P$-time reductions. We say that two problem are $\P$-time equivalent if each of them $\P$-time reduces to the other. Aside from many-to-one reductions, we use the so-called Cook reductions. That is, we say that a decision problem $(I_1,D_1)$ is  {\em $\P$-time Cook  reducible} to  a problem $(I_2,D_2)$ if there is an algorithm that solves problem $(I_1,D_1)$ using a polynomial number of calls to a subroutine for problem $(I_2,D_2)$, and polynomial time outside of those subroutine calls. Correspondingly, we say that two problem are {\em $\P$-time Cook equivalent} if each of them $\P$-time Cook reduces to the other.
+Since we mainly use this type of reduction we omit ``many-to-one'' from the name and call them $\P$-time reductions. We say that two problem are $\P$-time equivalent if each of them $\P$-time reduces to the other. Aside from many-to-one reductions, we use the so-called Cook reductions. That is, we say that a decision problem $(I_1,D_1)$ is  {\em $\P$-time Cook  reducible} to  a problem $(I_2,D_2)$ if there is an algorithm that solves problem $(I_1,D_1)$ using a polynomial number of calls to a subroutine for problem $(I_2,D_2)$, and polynomial time outside of those subroutine calls. Correspondingly, we say that two problem are {\em $\P$-time Cook equivalent} if each of them $\P$-time Cook reduces to the other.
 
 It is not hard to see that for a problem $\Pi\in \{\SSP, \KP, \BKP, \SMP, \BSMP\}$, $\Pi(G,X_1)$ is $\P$-time equivalent to $\Pi(G,X_2)$ for any finite generating sets $X_1,X_2$, i.e. the time complexity of $\Pi(G)$ does not depend on the choice of a finite generating set of a given group $G$.
 For further information concerning knapsack-type problems and their variations in groups, details regarding their algorithmic set-up, and the corresponding basic facts the reader is referred to~\cite{MNU1}.
@@ -574,7 +574,7 @@ The statement follows immediately from~\cite[Proposition 5.5]{MNU1}.
 Here we would also like to note that since the word problem straightforwardly reduces to $\AGP$, an obvious prerequisite for $\AGP(G)$ to belong to $\NP$ is to have a polynomial time word problem. Therefore, in the context of investigating time complexity of $\AGP$ we are primarily interested in such groups.
 
 
-The second observation is that for a given group $G$, $\AGP(G)$ $\P$-time reduces either of the problems $\SSP(G\ast F_2)$ or $\SSP(G\times F_2)$, where $F_2$ is a free group on two free generators.
+The second observation is that for a given group $G$, $\AGP(G)$ $\P$-time reduces to either of the problems $\SSP(G\ast F_2)$ or $\SSP(G\times F_2)$, where $F_2$ is a free group on two free generators.
 
 \begin{proposition}\label{pr:agp_to_ssp_star}
 Let $G$ be a finitely generated group, $F_2$ be the $2$-generated free group. Then $\AGP(G)$ is $\P$-time reducible to $\AGP(G\ast F_2)$.

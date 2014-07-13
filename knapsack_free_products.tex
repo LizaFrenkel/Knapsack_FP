@@ -9,6 +9,7 @@
 \usepackage{srcltx}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{amssymb}
 
 %\usepackage{pst-plot}
 %\usepackage{pst-text}
@@ -87,33 +88,25 @@ We study complexity of knapsack and related problem in free products of groups.
 \end{abstract}
 \maketitle
 
+\tableofcontents
+
 \section{Introduction}\label{sec:intro}
 
 
-\subsection{Motivation}\label{sub:motivation}
-In~\cite{Miasnikov-Nikolaev-Ushakov:2014a}, the authors introduce a number of certain decision, search and optimization algorithmic problems in groups, such as the subset sum problem, the knapsack problem, and the bounded submonoid membership problem (see Section~\ref{sec:prelim} for definitions). These problems are collectively referred to as {\em knapsack-type} problems and deal with different generalizations of the classical knapsack and subset sum problems over~$\mathbb Z$ to the case of arbitrary groups. In the same work, the authors study time complexity of such problems for various classes of groups, for example nilpotent, metabelian, hyperbolic groups. With that collection of results in mind, it is natural to ask what is the effect of free group constructions on the complexity of knapsack-type problems, primarily the subset sum problem. In the present paper we address this question in its basic variation, in the case of free and direct products of groups.
+%\subsection{Motivation}\label{sub:motivation}
+In~\cite{Miasnikov-Nikolaev-Ushakov:2014a}, the authors introduce a number of certain decision, search and optimization algorithmic problems in groups, such as the subset sum problem, the knapsack problem, and the bounded submonoid membership problem (see Section~\ref{sec:prelim} for definitions). These problems are collectively referred to as {\em knapsack-type} problems and deal with different generalizations of the classical knapsack and subset sum problems over~$\mathbb Z$ to the case of arbitrary groups. In the same work, the authors study time complexity of such problems for various classes of groups, for example nilpotent, metabelian, hyperbolic groups. With that collection of results in mind, it is natural to ask what is the effect of group constructions on the complexity of knapsack-type problems, primarily the subset sum problem. In the present paper we address this question in its basic variation, in the case of free and direct products of groups.
 
 %In this paper, following~\cite{Miasnikov-Nikolaev-Ushakov:2014a}  we continue the research on  non-commutative discrete (combinatorial) optimization. Specifically, we set out to study the properties of the subset sum problem in free products of groups.
-Typically, solutions to algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems in groups such as the word, conjugacy and membership~\cite{Mikhailova_68} problems. In some sense, the same expectations are satisfied with knapsack-type problems, albeit not in an entirely straightforward fashion. It turns out that knapsack-type problems such as the aforementioned subset sum problem, the knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion, and to carry solutions of these problems over to free products. Thus our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
+Typically, solutions to algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems in groups such as the word, conjugacy and membership~\cite{Mikhailova_68} problems. In some sense, the same expectations are satisfied with knapsack-type problems, albeit not in an entirely straightforward fashion. It turns out that knapsack-type problems such as the aforementioned subset sum problem, the knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion, and to carry solutions of these problems over to free products. Thus, our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
 
 Algorithmic problems in a direct product of groups can be dramatically more complex than in either factor, as is the case with the membership problem, first shown by Mikhailova~\cite{Mikhailova}. By contrast, the word problem in direct products easily reduces to that in the factors.
-In Section~\ref{sec:agp} we show that direct product does not preserve polynomial time subset sum problem. Thus, the subset problem occupies an interesting position, exhibiting behavior features of both word problem and membership problem; on the one hand, its decidability clearly carries immediately from factors to the direct product, while, on the other hand, its time complexity can increase dramatically (unless $\P=\NP$). % The now-classic construction in the latter work was recently exploited in~\cite{Miasnikov-Nikolaev-Ushakov:2014a} to show that a direct product does not preserve polynomial time bounded submonoid membership problem, unless $\P=\NP$. However, it is not a priori clear whether the subset sum problem should behave in a similar way.
+In Section~\ref{sec:agp} we show that direct product does not preserve polynomial time subset sum problem (unless $\P=\NP$). Thus, the subset problem occupies an interesting position, exhibiting features of both word problem and membership problem; on the one hand, its decidability clearly carries immediately from factors to the direct product, while, on the other hand, its time complexity can increase dramatically. % The now-classic construction in the latter work was recently exploited in~\cite{Miasnikov-Nikolaev-Ushakov:2014a} to show that a direct product does not preserve polynomial time bounded submonoid membership problem, unless $\P=\NP$.
 
 
+Below we provide basic definitions and some of the immediate properties of the problems mentioned above.
 We refer to~\cite{Miasnikov-Nikolaev-Ushakov:2014a,Miasnikov-Nikolaev-Ushakov:2014b} for the initial motivation for the study of non-commutative discrete optimization, the set-up of the problems, and initial facts on non-commutative discrete optimization.
 
-\subsection{Results and open questions}\label{sub:results}
-As we said in the preceding section, we set out to investigate properties of the subset problem ($\SSP$) in groups. In the context of our study, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$) (see Section~\ref{sec:problems} for definitions), as special cases of a more general algorithmic problem formulated in terms of graphs labeled by group elements, which we call the {\em acyclic graph problem} ($\AGP$).
-
-We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:agp_to_factors} that $\AGP$ in free products is $\P$-time reducible to $\AGP$ in the factors. As an immediate consequence, we assert in Corollary~\ref{cor:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). We also show that knapsack problem ($\KP$) in a free product $\P$-time reduces to $\BKP$, which allows to conclude that, assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
-
-In Propositions~\ref{pr:agp_to_ssp_star} and~\ref{pr:agp_to_ssp_cross}, we establish reduction of $\AGP$ to $\SSP$, albeit in a different group (augmented by a free or direct factor). As an application of this idea, in Proposition~\ref{pr:ssp_cross} we answer one of the starting questions of this paper by showing that direct product does not preserve polynomial $\SSP$ (unless $\P=\NP$). %, i.e. that there are groups $G,H$ such that $\SSP(G),\SSP(H)\in \P$, but $\SSP(G\times H)$ is $\NP$-complete (Corollary~\ref{cor:NP_complete_ssp_cross}).
-
-It remains an open question whether there is a group with polynomial time $\SSP$ but $\AGP$ is $\NP$-hard.
-
-The authors are grateful to A.~Miasnikov for bringing our attention to problem and for insightful advice and discussions.
-
-\section{Preliminaries}\label{sec:prelim}\label{sec:problems}
+\subsection{Preliminaries}\label{sec:prelim}\label{sec:problems}
 
 In this paper we follow terminology and notation introduced in \cite{Miasnikov-Nikolaev-Ushakov:2014a}.
 For convenience, below we formulate the algorithmic problems mentioned in Section~\ref{sec:intro}. We collectively refer to these problems as {\it knapsack-type} problems in groups.
@@ -190,344 +183,43 @@ It is not hard to see that for a problem $\Pi\in \{\SSP, \KP, \BKP, \SMP, \BSMP\
 For further information concerning knapsack-type problems and their variations in groups, details regarding their algorithmic set-up, and the corresponding basic facts the reader is referred to~\cite{Miasnikov-Nikolaev-Ushakov:2014a}.
 
 
-%\medskip
-%\noindent
-%{\bf The subset-sum optimization problem $\SSOP(G,X)$\index{$\SSOP(G,X)$}:}  Given an instance $g_1$, $\ldots$, $g_k$, $g\in G$ of  $\SSP(G)$ find a solution, if it exists,
-%$\varepsilon_1,\ldots,\varepsilon_k \in \{0,1\}$  subject to the optimization  condition that
-%the sum $\sum_i \varepsilon_i$ is minimal. Otherwise, output $No \ solutions$.
-%
-%\medskip
-%\noindent
-%{\bf The knapsack optimization problem  $\KOP(G,X)$\index{$\KOP(G,X)$}:} solve the equation (\ref{eq:IKP-def})
-%with the minimum possible number of factors.
-%
-%\medskip
-%In fact, in Section \ref{sec:general_properties} we also discuss other variations of $\KOP$ in groups,  which are even more direct generalization of the classical $\KOP$. In this case  when given $g_1,\ldots,g_k,g\in G$ one has to find $\varepsilon_1,\ldots,\varepsilon_k \in \mathbb{N}$ for which  the product $g_1^{\varepsilon_1}\ldots g_k^{\varepsilon_k}$ is as close to $g$ (in the metric of the Cayley graph of $G$) as possible.
-%
-%
-%\medskip
-%\noindent
-%{\bf The submonoid membership optimization problem $\SMOP(G,X)$\index{$\SMOP(G,X)$}:} %Let $c:G \rightarrow \mathbb N$ be a fixed function.
-%Given $g_1,\ldots,g_k,g\in G$, % and $c(g_1),\ldots,c(g_k)$,
-%express (if possible) $g$ as a product
-%\begin{equation}\label{eq:MSP_G}
-%g =_G g_{i_1} \ldots g_{i_m}
-%\end{equation}
-%with the  minimum number of factors $m$.
-%
-%\medskip
-%The submonoid membership optimization problem plays an important part in geometric group theory.  Indeed, in geometric language it asks to find a geodesic of a given element in a group (relative to a fixed finite generating set) or the distortion of a given element in a given finitely generated subgroup --- both are crucial geometric tasks.
-%
-%Sometimes (like in hyperbolic groups) the time complexity of the search $\SMP$ is not bounded from above by any computable function, in this case it makes sense to consider the optimization  version of the bounded $\SMP$, called $\BSMOP$, in which one has to solve $\BSMP(G)$ with the minimal possible number of factors.
-%
-%The formal description  of the problems above depends on the given finite (or sometimes countable) generating set $X$ of the group $G$.
-%To this end if $\Pi$ is any of the algorithmic problems above then by $\Pi(G,X)$ we denote this problem for the group $G$ relative to the generating set $X$.  It
-%is not hard to show (see Section \ref{sec:general_properties}) that for a given such $\Pi$, provided it is not an optimization problem, replacing one  finite
-%set of generators of $G$ by another  one ends up in a problem that is $\P$-time reducible
-%to the initial one.
-%Therefore, the time complexity of such  problems does not depend on a finite generating set,
-%it is an invariant of the group $G$.
-%In view of this, we omit $X$ from the notation   and denote such problems  by $\Pi(G)$.
-%
-%The typical groups we are interested in here are free,  hyperbolic, abelian, nilpotent, or metabelian.  In all these groups, and this is important, the word problem is decidable in $\P$-time. We might also be interested in constructing some exotic examples of groups where the problems mentioned above have unexpected complexity.
+\subsection{Results and open questions}\label{sub:results}
+\subsubsection{Free products.} In the context of studying properties of the subset sum problem ($\SSP$) in free products, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$), % (see Section~\ref{sec:problems} for definitions),
+as special cases of a more general algorithmic problem formulated in terms of graphs labeled by group elements, which we call the {\em acyclic graph problem} ($\AGP$), introduced in Section~\ref{sec:agp} below.
 
-%\subsection{Algorithmic set-up}\label{sub:setup}
-%Since the knapsack-type problems were not previously studied in non-commutative setting
-%it is worthwhile to say a few words on how we present the data,
-%models of computations, size functions,  etc.
-%(we refer to the book \cite{MSU_book:2011} for more details).
-%Our model of computation is RAM (random access machines).
-%
-%To make the statements of the problems (from Section \ref{sec:problems})
-%a bit more precise consider the following. If a  generating set $X = \{x_1,\ldots,x_n\}$ of a
-%group $G$  is finite, then the {\em size}
-%of the word $g = x_1\ldots x_k$ is its length $|g|=k$ and the size of
-%the tuple $g_1, \ldots, g_k, g$ from $G$
-%is the total sum of the lengths $|g_1| + \ldots +|g_k| +|g|$.
-%
-%
-%If the generating set $X$ of  $G$ is infinite,
-%then the size of a letter $x \in X$ is not necessarily equal to $1$,
-%it depends on how we represent elements of $X$.
-%In what follows we always assume that there is an efficient injective function $\nu: X \to \{0,1\}^*$ which encodes the elements in $X$
-%such that for every $u \in \{0,1\}^*$ one can algorithmically recognize if $u \in \nu(X)$, or not.
-%In this case for $x\in X$ define:
-%    $$\size(x) = |\nu(x)|$$
-%and for a word $w  = x_1 \ldots x_n$ with $x_i\in X$ define:
-%    $$\size(w) = \size(x_1) + \ldots + \size(x_n).$$
-%Similar to the above the size of a tuple $(g_1, \ldots, g_k, g)$ is:
-%    $$\size(g_1, \ldots, g_k, g) = \size(g_1) + \ldots + \size(g_k) +\size(g).$$
-%One can go a bit further and identify elements $x \in X$ with their images $\nu(x) \in \{0,1\}^*$,
-%and words $w  = x_1 \ldots x_n \in X^*$ with the words $\nu(x_1) \ldots \nu(x_n) \in \{0,1\}^*$.
-%This gives a homomorphism of monoids $\nu^*: X^* \to \{0,1\}^*$.
-%If in addition $\nu$ is such that for any $x,y \in X$
-%the word $\nu(x)$ is not a prefix of $\nu(y)$ (this is easy to arrange),
-%then:
-%\begin{itemize}
-%    \item
-%$\nu^*$ is injective,
-%    \item
-%$\nu^*(X^*)$ and $\nu^*(X)$ are algorithmically recognizable in $\{0,1\}^*$,
-%    \item
-%and for every word $v \in \nu^*(X^*)$ one can find the word $w \in X^*$ such that $\nu^*(w) = v$.
-%\end{itemize}
-%From now on we always assume that a generating set comes equipped with a function~$\nu$, termed {\it encoding},  satisfying
-%all the properties mentioned above.
-%In fact, almost  always all our generating sets $X$ are finite, and in those rare occasions when $X$ is infinite we describe $\nu$ precisely.
-%
-%In general, we view decision problems as pairs $(I,D)$, where $I$ is the space of instances of
-%the problem equipped with a  size function $\size: I \to \mathbb N$ and
-%a set $D \subseteq I$ of affirmative (positive) instances of the problem.
-%Of course, the set $I$ should be constructible and size function  should be computable.
-%In all our examples the set $I$ consists either of tuples of words $(g_1, \ldots,g_k,g)$ in
-%the   alphabet $\Sigma_X$ for some (perhaps, infinite) set of generators $X$ of a group $G$, or,
-%in the case of  $\BKP$  or $\BSMP$,
-%tuples of the type  $(g_1, \ldots,g_k,g,1^m)$ where $1^m$ is
-%a natural number $m$ given in unary.
-%The problem $(I,D)$ is decidable if there is an algorithm ${\mathcal A}$
-%that for any $x \in I$ decides whether  $x$ is in $D$ or not (${\mathcal A}$  answers ``Yes'' or ``No'').
-%The problem is in class $\P$ if there is a decision algorithm ${\mathcal A}$
-%with polynomial  time function with respect to the size of the instances in $I$, i.e.,
-%there is a polynomial $p(n)$ such that for any $x \in I$ the algorithm ${\mathcal A}$ starts on $x$,
-%halts in at most $p(\size(x))$ steps, and gives a correct answer ``Yes'' or ``No''.
-%Similarly, we define problems in linear  or quadratic time, and non-deterministic polynomial time $\NP$.
-%
-%
-%Recall that a decision problem $(I_1,D_1)$ is  {\em $\P$-time  reducible}
-%to  a problem $(I_2,D_2)$ if there is a $\P$-time computable function
-%$f:I_1  \to I_2$  such that for any $u \in I_1$ one has $u \in D_1 \Longleftrightarrow f(u) \in D_2$.
-%Such reductions are usually called either {\em many-to-one} $\P$-time reductions or Karp reductions.
-%Since we do not use any other reductions we omit ``many-to-one'' from the name and call them $\P$-time reductions.  Similarly, one can introduce linear or quadratic time reductions, etc. We say that two problem are $\P$-time equivalent if each of them $\P$-time reduces to the other.
-%
-%%One can similarly define $\P$-time reduction for optimization problems
-%Now we define an optimization problem as a  tuple $(I,J, F,\mu,{\mathop{\mathrm{extr}}})$, where $I$ is the set of instances, $J$ is a set of solutions, $F:I \to P(J)$ is a function that for each instance $u \in I$ associate a subset  $F(u)\subseteq J$  of all feasible solutions for an instance $u$, $\mu(u,v)$ is a non-negative real function  which for $u \in I, v \in F(u)$ measures the cost of solution $v$ for an instance $u$,  ${\mathop{\mathrm{extr}}}$ is either $\min$ or $\max$. This optimization problem, given $u\in I$, asks to find $v\in F(u)$ such that $\mu(u,v)={\mathop{\mathrm{extr}}}\{\mu(u,v')\mid v'\in F(u)\}$. Given two optimization problems $P_i=(I_i,J_i, F_i,\mu_i,{\mathop{\mathrm{extr}}}_i)$, $i=1,2$, we say that $P_1$ is {\em $\P$-time reducible} to $P_2$ if there is a $\P$-time computable functions $f:I_1\to I_2$, $f_u:F_1(u)\to F_2(f(u)), u\in I_1,$ such that $v\in F_1(u)\iff f_u(v)\in F_2(f(u))$ and $\mu_1(u,v)={\mathop{\mathrm{extr}}}_1\{\mu_1(u,v')\mid v'\in F_1(u)\} \Longleftrightarrow \mu_2(f(u),f_u(v))={\mathop{\mathrm{extr}}}_2\{\mu_2(f(u),v')\mid v'\in F_2(f(u))\}$. In our consequent considerations, the functions $f_u$ are apparent from the set up and we do not mention them in our arguments. We say that two optimization problem are $\P$-time equivalent if each of them $\P$-time reduces to the other.
+We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$. We show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:agp_to_factors} that $\AGP$ in free products is $\P$-time reducible to $\AGP$ in the factors. As an immediate consequence, we assert in Corollary~\ref{cor:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). We also show that knapsack problem ($\KP$) in a free product $\P$-time reduces to $\BKP$, which allows to conclude that, assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
+
+In Propositions~\ref{pr:agp_to_ssp_star} and~\ref{pr:agp_to_ssp_cross}, we establish reduction of $\AGP$ to $\SSP$, albeit in a different group (augmented by a free or direct factor). As an application of this idea, in Proposition~\ref{pr:ssp_cross} we answer one of the starting questions of this paper by showing that direct product does not preserve polynomial $\SSP$ (unless $\P=\NP$). %, i.e. that there are groups $G,H$ such that $\SSP(G),\SSP(H)\in \P$, but $\SSP(G\times H)$ is $\NP$-complete (Corollary~\ref{cor:NP_complete_ssp_cross}).
+
+It remains an open question whether there is a group with polynomial time $\SSP$ but $\AGP$ is $\NP$-hard.
+
+The authors are grateful to A.~Miasnikov for bringing our attention to problem and for insightful advice and discussions.
 
 
-%\subsection{More on the formulation of the problems}
-%\label{se:formulation}
-%In this section we continue the discussion from the introduction on  different variations of the problems $\SSP$, $\KP$, $\SMP$ in groups.
-%
-%There are two ways to state search variations of the problems: the first one, as described  in the introduction, considers only feasible instances of the problem, i.e.
-%% those instances of the problem which are in the ``yes'' part of the problem,
-%we assume that a solution to the instance exists; the second one is stronger, in this case it is required to solve the decision problem and simultaneously find a solution (if it exists) for a given instance. The former requires only a partial algorithm, while the latter asks for a total one. The weaker version of the problems $\SSP(G)$, $\KP(G)$, $\SMP(G)$ is always decidable in groups $G$  with decidable word problem, while the stronger one might be undecidable (for instance, $\SMP$ in hyperbolic groups). In this paper we consider the stronger version of the search problems.
-%
-%We mentioned in the introduction that the knapsack optimization problem ($\KOP$) may have different formulations in the non-commutative groups.
-%Now we explain what we meant.
-%
-% Recall first, that perhaps the most typical version of the classical $\KOP$ asks, when given positive integers $a_1, \ldots, a_k,a$ to find $\varepsilon_1, \ldots, \varepsilon_k \in \mathbb{N}$ such that the sum  $ \varepsilon_1a_1 + \ldots +  \varepsilon_ka_k$ is less or equal to $a$ but  maximal possible under this restriction.  One can  generalize this  to  non-commutative groups as follows.
-%
-% \medskip \noindent
-% {\bf $\KOP1(G,X)$\index{$\KOP1(G,X)$}:} Given $g_1,\ldots,g_k,g\in G$
-%find $\varepsilon_1, \ldots, \varepsilon_k \in \mathbb{N}\cup\{0\}$ with the least
-%possible distance between $g$ and $g_1^{\varepsilon_1} \ldots g_k^{\varepsilon_k}$ in the Cayley graph $Cay(G,X)$.
-%
-%\medskip
-% This formulation allows solutions with the ``total weight'' higher than the capacity of the knapsack. To define precisely when a given solution fits in geometrically  in the knapsack we need the following. For elements  $g, h, u \in G$  we say that $u$  {\it belongs to the segment $[g,h]$} if there is a geodesic path in $Cay(G,X)$ from $g$ to $h$ that contains $u$.   Now we can formulate the problem.
-%
-%  \medskip \noindent
-% {\bf $\KOP2(G,X)$\index{$\KOP2(G,X)$}:} Given $g_1,\ldots,g_k,g\in G$
-%find $\varepsilon_1, \ldots, \varepsilon_k \in \mathbb{N}\cup\{0\}$ such that $g_1^{\varepsilon_1} \ldots g_k^{\varepsilon_k}$ belongs to the segment $[1,g]$ and the distance between $g$ and $g_1^{\varepsilon_1} \ldots g_k^{\varepsilon_k}$ in the Cayley graph $Cay(G,X)$ is the least possible.
-%
-%
-%\medskip
-%
-%We formulate similar generalizations for the subset sum problem.
-%
-% \medskip \noindent
-% {\bf $\SSOP1(G,X)$\index{$\SSOP1(G,X)$}:} Given $g_1,\ldots,g_k,g\in G$
-%find $\varepsilon_1, \ldots, \varepsilon_k \in \{0,1\}$ such that the distance between $g$ and $g_1^{\varepsilon_1} \ldots g_k^{\varepsilon_k}$ in the Cayley graph $Cay(G,X)$ is the least possible.
-%
-%   \medskip \noindent
-%  {\bf $\SSOP2(G,X)$\index{$\SSOP1(G,X)$}:} Given $g_1,\ldots,g_k,g\in G$
-% find $\varepsilon_1, \ldots, \varepsilon_k \in \{0,1\}$ such that the $g_1^{\varepsilon_1} \ldots g_k^{\varepsilon_k}$ belongs to the segment $[1,g]$ and the distance between $g$ and $g_1^{\varepsilon_1} \ldots g_k^{\varepsilon_k}$ in the Cayley graph $Cay(G,X)$ is the least possible.
-%
-%\medskip
-%
-%One can also consider optimization problems relative to  a given non-trivial ``weight'' function $c:G \to \mathbb{R}$. For example, instead of optimizing $m\to\min$ in (\ref{eq:MSP_G}), one can ask to optimize $\sum c(g_{i_j})\to\min$. Notice that the optimization problems above correspond to the case when the weight function $c$ is a constant function $c = 1$ on $G$.
-
-%The classical $\SSP$  is the following algorithmic question.
-%Given $a_1,\ldots,a_k\in \mathbb Z$ and $M\in \mathbb Z$ decide if
-%    $$M=\varepsilon_1 a_1+\ldots+\varepsilon_k a_k$$
-%for some $\varepsilon_1,\ldots,\varepsilon_k \in \{0,1\}$.
-%It is well known (see \cite{GJ,Papa,Papadimitriou-Steiglitz:1998})
-%that if the numbers in $\SSP$ are given in  binary, then
-%the problem is $\NP$-complete, but if they are given in unary,
-%then the problem is  in $\P$. The examples below show how these
-%two variations of $\SSP$  appear naturally in the group theory context.
-%
-%\begin{example}\label{ex:inf_gen_set}
-%Three variations of subset sum problem for $\mathbb Z$:
-%\begin{itemize}
-%    \item
-%$\SSP(\mathbb Z,\{1\})$
-%is linear-time equivalent  to the   classical $\SSP$  in which numbers
-%are  given in unary.
-%In particular, $\SSP(\mathbb Z,\{1\})$ is  in $\P$.
-%    \item
-%For $n\in\mathbb N \cup\{0\}$ put $x_n=2^n$. The set
-%$X = \{x_n \mid n\in\mathbb N \cup\{0\}\}$
-%obviously generates $\mathbb Z$.
-%Fix an encoding $\nu:X^{\pm1} \to \{0,1\}^*$
-%for $X^{\pm1}$ defined by
-%$$
-%\left\{
-%\begin{array}{rcl}
-%x_i &\stackrel{\nu}{\mapsto}& 0101(00)^i11,\\
-%-x_i &\stackrel{\nu}{\mapsto}& 0100(00)^i11.
-%\end{array}
-%\right.
-%$$
-%Then $\SSP(\mathbb Z,X)$ is  $\P$-time equivalent to its  classical version where the  numbers are given in binary form.
-%In particular, $\SSP(\mathbb Z,X)$ is   $\NP$-complete.
-%    \item
-%Let $X = \{2^n \mid n\in\mathbb N \cup\{0\}\}$ and the number
-%$2^n$ is represented by the word $01(00)^{2^n}11$ (unary representation).
-%Then $\SSP(\mathbb Z,X)$ is  in $\P$.
-%    \item
-%One can easily define $\SSP$ and $\KP$ in arbitrary algebras $A$ over a field. These problems are equivalent to  $\SSP$ and $\KP$ in the additive group $A^+$ of $A$.
-%\qed
-%\end{itemize}
-%\end{example}
-%
-%
-%The first  example is of no surprise, of course, since, by definition,  we  treat words representing elements of the group  as in unary.
-%The second one shows that there might be a huge difference in complexity of $\SSP(G,X)$ for finite and infinite generating sets $X$. The third one indicates that if $X$ is infinite then it really matters how we represent the elements of $X$.
-%
-%
-%
-%
-%\begin{definition}
-%Let $G$ and $H$ be groups generated by countable sets $X$ and $Y$ with encodings $\nu$ and $\mu$, respectively. A homomorphism $\varphi:G \to H$
-%is called $\P$-time computable relative to $(X,\nu), (Y,\mu)$
-%if there exists an algorithm that
-%given a word $\nu(u) \in \nu(\Sigma_X^*)$
-%computes in polynomial time  (in the size of the word $\nu(u)$)  a word $\mu(v) \in \mu(\Sigma_Y^{\ast})$
-%representing  the element $v=\varphi(u)\in H$.
-%\end{definition}
-%
-%\begin{example} \label{ex:finite}
-%Let $G_i$ be a group generated by a set $X_i$ with encoding $\nu_i$, $i = 1,2$. If $X_1$ is finite then any homomorphism $\varphi:G_1 \to G_2$ is
-%$\P$-time computable relative to $(X_1,\nu_1), (X_2,\nu_2)$.
-%\end{example}
-%To formulate the  following results put
-%\begin{eqnarray*}
-%{\mathcal{DP}} &=& \{\SSP,\KP,\SMP,\BKP,\BSMP\},\\
-%{\mathcal{OP}} &=& \{\SSOP,\SSOP1,\SSOP2, \KOP,\KOP1, \KOP2,\SMOP,\BSMOP\},\\
-%{\mathcal P}&=&{\mathcal{DP}}\ \cup\ {\mathcal{OP}}.
-%\end{eqnarray*}
-%
-%%$${\bf  \mathcal{OP}} = \{\SSOP,\SSOP1,\SSOP2, \KOP,\KOP1, \KOP2,\SMOP,\BSMOP\}.$$
-%
-%
-%\begin{lemma}\label{le:SSP_reduction}
-%Let $G_i$ be a group generated by a set $X_i$ with an encoding $\nu_i$, $i = 1,2$. If $\phi:G_1 \to G_2$ is a $\P$-time computable embedding
-%relative to $(X_1,\nu_1), (X_2,\nu_2)$ then   ${\bf \Pi}(G_1,X_1)$ is $\P$-time  reducible to ${\bf \Pi}(G_2,X_2)$ for any problem ${\bf \Pi} \in \mathcal{P}$.
-%
-%\end{lemma}
-%
-%\begin{proof}
-%Straightforward.
-%\end{proof}
-%
-%In view of Example \ref{ex:finite} we have the following result.
-%
-%\begin{proposition}\label{le:FiniteX_independence}
-%If $X$ and $Y$ are finite generating sets for a group $G$, then  ${\bf \Pi}(G,X)$ is $\P$-time  equivalent  to ${\bf \Pi}(G,Y)$ for any problem ${\bf \Pi} \in \mathcal{P}$.
-%\end{proposition}
-%
-%\begin{proposition}
-%Let $G$ be a group and $X$ a generating set for $G$.
-%Then the  word problem ($\WP$) for $G$ is $\P$-time reducible to ${\bf \Pi}(G,X)$ for any problem ${\bf \Pi} \in \mathcal{P}$.
-%\end{proposition}
-%
-%\begin{proof}
-%Let $w=w(X)$.
-%Then $w=1$ in $G$ if and only if $1^\varepsilon  = w$ in $G$ for some $\varepsilon \in \{0,1\}$, i.e.,
-%if and only if the instance $1,w$ of $\SSP(G)$ is positive. Likewise for other problems from ${\mathcal P}$.
-%\end{proof}
-%
-%\begin{corollary}
-%Let $G$ be a group with a generating set $X$. Then:
-%
-%\begin{enumerate}
-%\item [1)] $\SSP(G,X)$ (or $\BKP(G,X)$, or $\BSMP(G,X)$) is decidable if and only if the word problem
-%for $G$ is decidable.
-%\item [2)] If the word problem for $G$ is $\NP$-hard,
-%then ${\bf \Pi}(G,X)$ is $\NP$-hard too for any ${\bf \Pi} \in \mathcal{DP}$.
-%\end{enumerate}
-%\end{corollary}
-%
-%This corollary shows that from $\SSP$ viewpoint groups with polynomial time decidable word problem are the most interesting.
-%
-%The following result shows how decision version of $\SSP(G)$ gives a search  algorithm to find an actual sequence of $\varepsilon_i$'s that is a particular solution for a given instance of $\SSP(G)$.
-%
-%\begin{proposition}
-%\label{pr:solutions-SSP}
-%For any group $G$ the search $\SSP(G)$ is $\P$-time Turing reducible to the decision $\SSP(G)$. In particular, if $\SSP(G)$ is in $\P$ then search $\SSP(G)$ is also in $\P$.
-%\end{proposition}
-%\begin{proof}
-%The argument is rather known, so we just give a quick outline to show that it works in the non-commutative case too. Let $w_1,\ldots,w_k,w$ be a given instance of $\SSP(G)$ that has a solution in $G$. To find a solution
-%$\varepsilon_1,\ldots,\varepsilon_k \in \{0,1\}$
-%for this instance consider the following algorithm.
-%\begin{itemize}
-%    \item
-%Solve the decision problem for $(w_2,\ldots,w_k),w$ in $G$. If the answer is positive, then
-%put $\varepsilon_1=0$. Otherwise put $\varepsilon_1=1$ and replace $w$ with $w_1^{-1}w$.
-%    \item
-%Continue inductively and find the whole sequence
-%$\varepsilon_1,\ldots,\varepsilon_k$.
-%\end{itemize}
-%\end{proof}
-%
-%\begin{proposition}
-%\label{pr:SSP-BKP}
-%For any group $G$ the following hold:
-%\begin{itemize}
-%\item [1)] $\BKP(G)$ is  $\P$-time reducible to $\SSP(G)$;
-%\item [2)] $\BSMP(G)$, as well as its optimization variation,  is $\P$-time reducible to $\SSOP(G)$.
-%
-%\end{itemize}
-%\end{proposition}
-%\begin{proof}
-%Given an instance $1^m,w_1,\ldots,w_k,w$ of $\BKP(G)$ we consider a sequence
-%   \begin{equation} \label{eq:BKP-to-SSP}
-%   w_1,  \ldots,w_1, w_2, \ldots, w_2,  \ldots, w_k, \ldots,w_k, w \in G,
-%   \end{equation}
-%   where each segment $w_i, \ldots, w_i$ has precisely $m$ words $w_i$.
-%Obviously, the initial instance of $\BKP(G)$ has a solution in $G$ if and only if  $\SSP(G)$ has a solution in $G$ for the  sequence (\ref{eq:BKP-to-SSP}). This establishes a $\P$-time reduction of $\BKP(G)$ to $\SSP(G)$.
-%
-%To reduce $\BSMP(G)$ to $\SSOP(G)$ for a given instance  $1^m,w_1,\ldots,w_k,w$ of $\BSMP(G)$ consider a sequence
-%\begin{equation} \label{eq:BSMP-to-SSP}
-%   w_1,  \ldots, w_k, w_1, \ldots, w_k,  \ldots, w_1, \ldots, w_k, w \in G,
-%   \end{equation}
-%where each segment $w_1,  \ldots, w_k$ occurs precisely $m$ times. Obviously, any solution of $\BSMP$ for a given instance gives a solution of $\SSP(G)$ for the sequence (\ref{eq:BSMP-to-SSP}) and vice versa. Hence, solving $\SSOP(G)$ for the sequence (\ref{eq:BSMP-to-SSP}) also solves $\BSMP(G)$  and  $\BSMOP(G)$ for the initial instance. This gives a  polynomial time reduction of $\BSMP(G)$ and $\BSMOP(G)$  to $\SSOP(G)$.
-%
-%Finally, note that replacing $w_1,\ldots, w_k$ with
-%$w_1,w_1^{-1},\ldots, w_k,w_k^{-1}$ gives a polynomial time reduction of $\IKP(G)$ to $\KP(G)$.
-%
-%\end{proof}
 
 \section{Acyclic graph problem}\label{sec:agp}
 Let $G$ be a group and $X=\{x_1,\ldots,x_n\}$ a generating set for $G$.
 
-\medskip
-\noindent
-{\bf The acyclic graph membership problem:} Given $g\in G$ and an acyclic oriented graph $\Gamma$ labeled by words in $X\cup X^{-1}$, decide whether there is a directed path in $\Gamma$ labeled by a word $w$ such that $w=g$ in~$G$.
-
-\medskip
-Note that by exhaustively enumerating all pairs of vertices in $\Gamma$, this problem $\P$-time Cook reduces to the following.
+%\medskip
+%\noindent
+%{\bf The acyclic graph membership problem:} Given $g\in G$ and an acyclic oriented graph $\Gamma$ labeled by words in $X\cup X^{-1}$, decide whether there is a directed path in $\Gamma$ labeled by a word $w$ such that $w=g$ in~$G$.
+%
+%\medskip
+%Note that by exhaustively enumerating all pairs of vertices in $\Gamma$, this problem $\P$-time Cook reduces to the following.
 
 \medskip
 \noindent
 {\bf The acyclic graph problem $\AGP(G,X)$\index{$\AGP(G,X)$}:}
-Given an acyclic oriented graph $\Gamma$ labeled by letters in $X\cup X^{-1}\cup \{\varepsilon\}$ with two marked vertices, $\alpha$ and $\omega$, decide whether there is an oriented path in $\Gamma$ from $\alpha$ to $\omega$ labeled by a word $w$ such that $w=1$ in~$G$.
+Given an acyclic directed graph $\Gamma$ labeled by letters in $X\cup X^{-1}\cup \{\varepsilon\}$ with two marked vertices, $\alpha$ and $\omega$, decide whether there is an oriented path in $\Gamma$ from $\alpha$ to $\omega$ labeled by a word $w$ such that $w=1$ in~$G$.
 
 \medskip
-Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$. Let total word length of labels of edges of $\Gamma$ be $l$. For a given instance of $\AGP(G,X)$, its size is the value $m+n+l$.
+Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$. Let total word length of labels of edges of $\Gamma$ be $l$. For a given instance of $\AGP(G,X)$, its {\em size} is the value $m+n+l$. With a slight abuse of terminology, we will also sometimes use labels that are words rather than letters in $X\cup X^{-1}\cup\{\varepsilon\}$. Doing so does not distort size of an instance of $\AGP(G,X)$ more than by a factor of $2$.
 
-Note that by a standard argument, if $X_1$ and $X_2$ are two finite generating sets for a group $G$, the problems $\AGP(G,X_1)$ and $\AGP(G,X_2)$ are $\P$-time equivalent. In this sense, the complexity  of $\AGP$ in a group $G$ does not depend on the choice of a finite generating set. We note in passing that with infinite generating sets the situation is more involved and refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a} for details. In the sequel we will often write $\AGP(G)$ instead of $\AGP(G,X)$, implying an arbitrary finite generating set.
+Note that by a standard argument, if $X_1$ and $X_2$ are two finite generating sets for a group $G$, the problems $\AGP(G,X_1)$ and $\AGP(G,X_2)$ are $\P$-time equivalent. In this sense, the complexity  of $\AGP$ in a group $G$ does not depend on the choice of a finite generating set. In the sequel we often write $\AGP(G)$ instead of $\AGP(G,X)$, implying an arbitrary finite generating set.
+When infinite generating sets are concerned, the situation is more involved. We refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a} for details regarding treatment of infinite generating sets.
 
 We make a note of the following obvious property of $\AGP$.
+
 \begin{proposition}\label{pr:subgroup}
 Let $G$ be a finitely generated group and $H\le G$ its finitely generated subgroup. Then $\AGP(H)$ is $\P$-time reducible to $\AGP(G)$. In particular,
 \begin{enumerate}
@@ -536,6 +228,38 @@ Let $G$ be a finitely generated group and $H\le G$ its finitely generated subgro
 \end{enumerate}
 \end{proposition}
 
+Methods used in~\cite{Miasnikov-Nikolaev-Ushakov:2014a} to treat $\SSP$ and $\BSMP$ in hyperbolic and nilpotent groups can be easily adjusted to treat $\AGP$ as well.
+\begin{proposition}\label{pr:agp_nilp}
+$\AGP(G)\in\P$ for every finitely generated virtually nilpotent group $G$.
+\end{proposition}
+\begin{proof}
+Follows immediately from polynomial growth of virtually nilpotent groups~\cite{Wolf}, similar to the proof Theorem~3.3 in~\cite{Miasnikov-Nikolaev-Ushakov:2014a}.
+\end{proof}
+
+\begin{proposition}\label{pr:agp_hyp}
+$\AGP(G)\in\P$ for every finitely generated hyperbolic group $G$.
+\end{proposition}
+\begin{proof}
+The statement follows immediately from~\cite[Proposition 5.5]{Miasnikov-Nikolaev-Ushakov:2014a}.
+\end{proof}
+Here we would also like to note that since the word problem straightforwardly reduces to $\AGP$, an obvious prerequisite for $\AGP(G)$ to belong to $\NP$ is to have a polynomial time word problem. Therefore, in the context of investigating time complexity of $\AGP$ we are primarily interested in such groups.
+
+We also note that adding or eliminating a direct factor $\mathbb Z$ does not change complexity of $\AGP$.
+\begin{proposition}\label{pr:kill_z}
+Let $G$ be a finitely generated group. Then $\AGP(G)$ and $\AGP(G\times \mathbb Z)$ are $\P$-time Cook equivalent.
+\end{proposition}
+\begin{proof}
+We only have to show the reduction of $\AGP(G\times\mathbb Z)$ to $\AGP(G)$, since the other direction is immediate by Proposition~\ref{pr:subgroup}.
+
+Suppose $\Gamma$ is a given acyclic directed graph with edge labels $(w_1,n_1)$, $(w_2,n_2)$, $\ldots$, $(w_k,n_k)$. We compute $N=|n_1|+\ldots+|n_k|$ and consider graph $\Delta$ with vertex set $V(\Gamma)\times [-N,N]$.
+
+{\an Finish the proof!}
+
+\end{proof}
+
+
+
+\subsection{Connection between acyclic graph problem and knapsack-type problems}
 \begin{proposition}\label{pr:reduction_to_agp}
 $\SSP(G),\ \BKP(G),\ \BSMP(G)$ are $\P$-time reducible to $\AGP(G)$.
 \end{proposition}
@@ -551,33 +275,19 @@ Since that $\BKP(G)$ $\P$-time reduces to $\SSP(G)$ (see~\cite{Miasnikov-Nikolae
  \includegraphics[width=4.5in]{bsmp}
  \caption{Graph $\Delta(w_1,w_2,\ldots,w_k,w,1^n)$, Proposition~\ref{pr:reduction_to_agp}. There are $n+2$ vertices in the graph.}\label{fi:BSMP}
 \end{figure}
+It is easy to see that $(w_1,w_2,\ldots,w_k,w,1^n)$ is a positive instance of $\BSMP(G)$ if and only if $\Delta$ is a positive instance of $\AGP$.
 \end{proof}
 
-While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, we make note of the following two observations. Firstly, in every case when it is known that those problems are $\P$-time, so is $\AGP$.
+Given Proposition~\ref{pr:reduction_to_agp} and results of~\cite{Miasnikov-Nikolaev-Ushakov:2014a}, we immediately see that $\AGP$ is $\NP$-complete in the following cases; certain metabelian groups (finitely generated free metabelian group, wreath products of two infinite abelian groups, Gilbert Baumslag's group $B=\langle a,s,t\mid [a,a^t]=1, [s,t]=1, a^s=aa^t\rangle$, Baumslag--Solitar groups $BS(m,n)$ with $|m|\neq |n|$, $m,n\neq 0$), Thompson's group $F$, $F_2\times F_2$, linear groups $GL(n, \mathbb Z)$ with $n\ge 4$, braid groups $B_n$ with $n\ge 6$, graph groups whose graph contains an induced square $C_4$.
 
-\begin{proposition}\label{pr:agp_nilp}
-$\AGP(G)\in\P$ for every finitely generated virtually nilpotent group $G$.
-\end{proposition}
-\begin{proof}
-Follows immediately from polynomial growth of virtually nilpotent functions~\cite{Wolf}, similar to the proof Theorem~3.3 in~\cite{Miasnikov-Nikolaev-Ushakov:2014a}.
-\end{proof}
-
-\begin{proposition}\label{pr:agp_hyp}
-$\AGP(G)\in\P$ for every finitely generated hyperbolic group $G$.
-\end{proposition}
-\begin{proof}
-The statement follows immediately from~\cite[Proposition 5.5]{Miasnikov-Nikolaev-Ushakov:2014a}.
-\end{proof}
-Here we would also like to note that since the word problem straightforwardly reduces to $\AGP$, an obvious prerequisite for $\AGP(G)$ to belong to $\NP$ is to have a polynomial time word problem. Therefore, in the context of investigating time complexity of $\AGP$ we are primarily interested in such groups.
-
-
+While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, we make note of the following two observations. Firstly, in every case when it is known that those problems are $\P$-time, so is $\AGP$, as shown in Propositions~\ref{pr:agp_nilp} and~\ref{pr:agp_hyp}.
 The second observation is that for a given group $G$, $\AGP(G)$ $\P$-time reduces to either of the problems $\SSP(G\ast F_2)$ or $\SSP(G\times F_2)$, where $F_2$ is a free group on two free generators.
 
 \begin{proposition}\label{pr:agp_to_ssp_star}
-Let $G$ be a finitely generated group, $F_2$ be the $2$-generated free group. Then $\AGP(G)$ is $\P$-time reducible to $\AGP(G\ast F_2)$.
+Let $G$ be a finitely generated group, $F_2$ be the $2$-generated free group. Then $\AGP(G)$ is $\P$-time reducible to $\SSP(G\ast F_2)$.
 \end{proposition}
 \begin{proof}
-Let $\Gamma$ be a given directed acyclic graph on $n$ vertices with edges labeled by group words in a generating set $X$ of the group $G$. We start by enumerating vertices of $\Gamma$ by symbols $V_1$ through $V_n$ so that if there is a path in $\Gamma$ from $V_i$ to $V_j$ then $i\le j$. This can be done in a time linear in $\size(\Gamma)$ by~\cite{Kahn}. We assume $\alpha=V_1$ and $\omega=V_n$, otherwise discarding unnecessary vertices. We perform a similar ordering of edges, i.e. we enumerate by symbols $E_1,\ldots, E_m$ so that if there is a path in $\Gamma$ whose first edge is $E_i$ and the last edge $E_j$, then $i\le j$ (considering the dual to $\Gamma$ graph we see that this can be done in time quadratic in $\size(\Gamma)$). For each edge $E_i$, $1\le i\le m$, denote its label by $u_i$, its origin by $V_{o(i)}$, and its terminus by $V_{t(i)}$. We similarly assume that $o(1)=1$ and $t(m)=n$.
+Let $\Gamma$ be a given directed acyclic graph on $n$ vertices with edges labeled by group words in a generating set $X$ of the group $G$. We start by organizing a topological sorting on $\Gamma$, that is enumerating vertices of $\Gamma$ by symbols $V_1$ through $V_n$ so that if there is a path in $\Gamma$ from $V_i$ to $V_j$ then $i\le j$. This can be done in a time linear in $\size(\Gamma)$ by~\cite{Kahn}. We assume $\alpha=V_1$ and $\omega=V_n$, otherwise discarding unnecessary vertices. We perform a similar ordering of edges, i.e. we enumerate them by symbols $E_1,\ldots, E_m$ so that if there is a path in $\Gamma$ whose first edge is $E_i$ and the last edge $E_j$, then $i\le j$ (considering the dual to $\Gamma$ graph we see that this can be done in time quadratic in $\size(\Gamma)$). For each edge $E_i$, $1\le i\le m$, denote its label by $u_i$, its origin by $V_{o(i)}$, and its terminus by $V_{t(i)}$. We similarly assume that $o(1)=1$ and $t(m)=n$.
 
 Next, we produce in polynomial time $n$ freely independent elements $v_1,\ldots, v_j$ of the free group $F_2$, of which we think as labels of the corresponding vertices $V_1,\ldots, V_n$. For example, $v_j=x^jyx^j$, $j=1,\ldots,n$, suffice.
 We claim that
@@ -614,14 +324,14 @@ i.e. edges $E_{i_1}, E_{i_2},\ldots, E_{i_k}$ for a path from $V_1$ to $V_n$ in 
 \end{proof}
 
 \begin{proposition}\label{pr:agp_to_ssp_cross}
-Let $G$ be a finitely generated group, $F_2$ be the $2$-generated free group. Then $\AGP(G)$ is $\P$-time reducible to $\AGP(G\times F_2)$.
+Let $G$ be a finitely generated group, $F_2$ be the $2$-generated free group. Then $\AGP(G)$ is $\P$-time reducible to $\SSP(G\times F_2)$.
 \end{proposition}
 \begin{proof}
 The proof repeats that of Proposition~\ref{pr:agp_to_ssp_star} with $G\times F_2$ instead of $G\ast F_2$.
 \end{proof}
 
-
-Now note that while we show in the next section that free product preserves polynomial time $\AGP$, the direct product of groups may change the complexity of $\AGP$ dramatically.
+\section{$\AGP$ and $\SSP$ in direct products.}\label{sec:direct_prod}
+While we show in Section~\ref{sec:direct_prod} that free product preserves polynomial time $\AGP$, the direct product of groups may change the complexity of $\AGP$ dramatically.
 \begin{proposition}\label{pr:agp_cross}
 There exist groups $G,H$ such that $\AGP(G),\AGP(H)\in\P$, but $\AGP(G\times H)$ is $\NP$-complete.
 \end{proposition}
@@ -634,7 +344,7 @@ As will be made clear below, Proposition~\ref{pr:agp_to_ssp_cross} is enough to 
 \begin{proposition}\label{pr:bsmp_to_ssp}
 Let $G$ be a finitely generated group. Then $\BSMP(G)$ $\P$-time Cook reduces to $\SSP(G\times \mathbb Z)$.
 \end{proposition}
-\begin{proof} Let $w_1,w_2,\ldots, w_k, 1^n$ be the input of $\BSMP(G)$. We construct graphs $\Gamma_m$, $m=1,\ldots, n$, with edges labeled by elements of $G\times \mathbb Z$ as shown in the Figure~\ref{fi:bsmp_to_ssp}. Note that a path from $\alpha$ to $\omega$ is labeled by a word trivial in $G\times\mathbb Z$ if and only if it passes through exactly $m$ edges labeled by $(w_{i_1},1),\ldots,(w_{i_m},1)$ and $w_{i_1}\cdots w_{i_m}=w$ in $G$. Therefore, the tuple $w_1,\ldots,w_k,1^n$ is a positive instance of $\BSMP(G)$ if and only if at least one of graphs $\Gamma_1,\ldots, \Gamma_n$ is a positive instance of $\SSP(F\times\mathbb Z)$.
+\begin{proof} Let $w_1,w_2,\ldots, w_k, w, 1^n$ be the input of $\BSMP(G)$. We construct graphs $\Gamma_m$, $m=1,\ldots, n$, with edges labeled by elements of $G\times \mathbb Z$ as shown in the Figure~\ref{fi:bsmp_to_ssp}. Note that a path from $\alpha$ to $\omega$ is labeled by a word trivial in $G\times\mathbb Z$ if and only if it passes through exactly $m$ edges labeled by $(w_{i_1},1),\ldots,(w_{i_m},1)$ and $w_{i_1}\cdots w_{i_m}=w$ in $G$. Therefore, the tuple $w_1,\ldots,w_k,1^n$ is a positive instance of $\BSMP(G)$ if and only if at least one of graphs $\Gamma_1,\ldots, \Gamma_n$ is a positive instance of $\SSP(F\times\mathbb Z)$.
 \begin{figure}[h]
  \centering
  \includegraphics[width=6in]{bsmp_to_ssp}
@@ -656,18 +366,14 @@ The latter proposition answers the question whether a direct product preserves p
 There exist finitely generated groups $G,H$ such that $\SSP(G)\in\P$, $\SSP(H)\in\P$ but $\SSP(G\times H)$ is $\NP$-complete.
 \end{corollary}
 \begin{proof}
-Combining Propositions~\ref{pr:agp_hyp} and~\ref{pr:ssp_cross}, we obtain at least one pair of the two $G=H=F_2$ or $G=F_2\times F_2$, $H=\mathbb Z$ delivers the statement.{\an Wrong! Not NP-complete $\not\Rightarrow$ P-time.}
+By Propositions~\ref{pr:agp_hyp} and~\ref{pr:kill_z}, $\AGP(F_2\times\mathbb Z)$ is $\P$-time. Therefore, $\SSP(F_2)$ and $\SSP(F_2\times\mathbb Z)$ are $\P$-time, while
+$\SSP(F_2\times (F_2\times \mathbb Z))$ is $\NP$-complete by the above result.
 \end{proof}
-In the light the above corollary, a natural question to ask is whether $\SSP(F_2\times \mathbb Z)$ is $\NP$-complete; and, if the answer is negative, whether $\SSP(F_2\times F_2)$ is.
-
-
-Other examples when $\AGP$ is $\NP$-complete include (see~\cite{Miasnikov-Nikolaev-Ushakov:2014a}) certain metabelian groups (finitely generated free metabelian group, wreath products of two infinite abelian groups, Gilber Baumslag's group $GB=\langle a,s,t\mid [a,a^t]=1, [s,t]=1, a^s=aa^t\rangle$, Baumslag--Solitar groups $BS(m,n)$ with $|m|\neq |n|$, $m,n\neq 0$), Thompson's group $F$, $F_2\times F_2$, linear groups $GL(n, \mathbb Z)$ with $n\ge 4$, braid groups $B_n$ with $n\ge 6$, graph groups whose
-graph contains an induced square $C_4$.
-
+In the light the above corollary, a natural question to ask is whether $\SSP(F_2\times \mathbb F_2)$ is $\NP$-complete.
 
 
 \begin{corollary}
-$\SSP$ is $\NP$-complete in braid groups $B_n$, $n\ge 8$, special linear groups $SL(n,\mathbb Z)$, $n\ge 5$, graph groups whose graph contains an induced square pyramid (also called the wheel graph~$W_5$).
+$\SSP$ is $\NP$-complete in braid groups $B_n$, $n\ge 8$, special linear groups $SL(n,\mathbb Z)$, $n\ge 5$, graph groups whose graph contains the square pyramid~$\boxtimes$ (also called the wheel graph~$W_5$) as an induced subgraph.
 \end{corollary}
 \begin{proof}
 This follows from Propositions~\ref{pr:bsmp_to_ssp} and~\ref{pr:subgroup} since all of the listed groups contain $F_2\times F_2\times \mathbb Z$ as a subgroup.

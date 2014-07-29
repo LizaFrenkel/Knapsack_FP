@@ -17,6 +17,7 @@
 
 
 \newcommand{\an}{\noindent\color{blue} Andrey: }{}
+\newcommand{\Set}[2]{\left\{\, #1 \;\middle|\; #2 \,\right\}}%set
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -97,10 +98,10 @@ We study complexity of knapsack and related problem in free products of groups.
 In~\cite{Miasnikov-Nikolaev-Ushakov:2014a}, the authors introduce a number of certain decision, search and optimization algorithmic problems in groups, such as the subset sum problem, the knapsack problem, and the bounded submonoid membership problem (see Section~\ref{sec:prelim} for definitions). These problems are collectively referred to as {\em knapsack-type} problems and deal with different generalizations of the classical knapsack and subset sum problems over~$\mathbb Z$ to the case of arbitrary groups. In the same work, the authors study time complexity of such problems for various classes of groups, for example nilpotent, metabelian, hyperbolic groups. With that collection of results in mind, it is natural to ask what is the effect of group constructions on the complexity of knapsack-type problems, primarily the subset sum problem. In the present paper we address this question in its basic variation, in the case of free and direct products of groups.
 
 %In this paper, following~\cite{Miasnikov-Nikolaev-Ushakov:2014a}  we continue the research on  non-commutative discrete (combinatorial) optimization. Specifically, we set out to study the properties of the subset sum problem in free products of groups.
-Typically, solutions to algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems in groups such as the word, conjugacy and membership~\cite{Mikhailova_68} problems. In some sense, the same expectations are satisfied with knapsack-type problems, albeit not in an entirely straightforward fashion. It turns out that knapsack-type problems such as the aforementioned subset sum problem, the knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion, and to carry solutions of these problems over to free products. Thus, our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
+Solutions to many algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems in groups such as the word, conjugacy~\cite{Lyndon-Schupp:2001} and membership~\cite{Mikhailova_68} problems. In some sense, the same expectations are satisfied with knapsack-type problems, albeit not in an entirely straightforward fashion. It turns out that knapsack-type problems such as the aforementioned subset sum problem, the bounded knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion, and to carry solutions of these problems over to free products. Thus, our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
 
 Algorithmic problems in a direct product of groups can be dramatically more complex than in either factor, as is the case with the membership problem, first shown by Mikhailova~\cite{Mikhailova}. By contrast, the word problem in direct products easily reduces to that in the factors.
-In Section~\ref{sec:agp} we show that direct product does not preserve polynomial time subset sum problem (unless $\P=\NP$). Thus, the subset problem occupies an interesting position, exhibiting features of both word problem and membership problem; on the one hand, its decidability clearly carries immediately from factors to the direct product, while, on the other hand, its time complexity can increase dramatically. % The now-classic construction in the latter work was recently exploited in~\cite{Miasnikov-Nikolaev-Ushakov:2014a} to show that a direct product does not preserve polynomial time bounded submonoid membership problem, unless $\P=\NP$.
+In Section~\ref{sec:direct_prod} we show that direct product does not preserve polynomial time subset sum problem (unless $\P=\NP$). Thus, the subset problem occupies an interesting position, exhibiting features of both word problem and membership problem; on the one hand, its decidability clearly carries immediately from factors to the direct product, while, on the other hand, its time complexity can increase dramatically. % The now-classic construction in the latter work was recently exploited in~\cite{Miasnikov-Nikolaev-Ushakov:2014a} to show that a direct product does not preserve polynomial time bounded submonoid membership problem, unless $\P=\NP$.
 
 
 Below we provide basic definitions and some of the immediate properties of the problems mentioned above.
@@ -154,7 +155,7 @@ g = g_{i_1}, \ldots, g_{i_s}.
 The restriction of $\SMP$ to the case when the set of generators $\{g_1, \ldots,g_n\}$ is closed under inversion (so the submonoid is actually a subgroup of $G$) is  a well-known problem in group theory, the {\em uniform subgroup membership problem} in $G$.
 %There is a huge bibliography on this subject, we mention some related results  in Section \ref{sec:results}.
 
-As usual in complexity theory, it makes sense to consider the {\em bounded} versions of $\KP$ and $\SMP$, at least they are always decidable in groups where the word problem is decidable. In this case the problem is to verify  if the corresponding equalities (\ref{eq:IKP-def}) and  (\ref{eq:SMP-def}) hold for a given $g$ provided that the number of factors in these equalities  is bounded by a natural number $m$ which is given in the unary form, i.e., as the word $1^m$. In particular, the bounded knapsack problem ($\BKP$) for a group $G$ asks to decide, when  given $g_1,\ldots,g_k,g\in G$ and $1^m\in\mathbb N$, if the equality (\ref{eq:IKP-def}) holds for some
+As usual in complexity theory, it makes sense to consider the {\em bounded} versions of $\KP$ and $\SMP$, at least they are always decidable in groups where the word problem is. In this case the problem is to verify  if the corresponding equalities (\ref{eq:IKP-def}) and  (\ref{eq:SMP-def}) hold for a given $g$ provided that the number of factors in these equalities  is bounded by a natural number $m$ which is given in the unary form, i.e., as the word $1^m$. In particular, the bounded knapsack problem ($\BKP$) for a group $G$ asks to decide, when  given $g_1,\ldots,g_k,g\in G$ and $1^m\in\mathbb N$, if the equality (\ref{eq:IKP-def}) holds for some
 $\varepsilon_i \in \{0,1, \ldots, m \}$.
 This problem  is  $\P$-time equivalent to  $\SSP$ in $G$ (see the definition of $\P$-time reduction below), so it suffices for our purposes to consider only $\SSP$ in groups.
 On the other hand,  the bounded $\SMP$ in $G$ is very interesting in its own right.
@@ -177,10 +178,10 @@ Recall that a decision problem $(I_1,D_1)$ is  {\em $\P$-time  reducible}
 to  a problem $(I_2,D_2)$ if there is a $\P$-time computable function
 $f:I_1  \to I_2$  such that for any $u \in I_1$ one has $u \in D_1 \Longleftrightarrow f(u) \in D_2$.
 Such reductions are usually called either {\em many-to-one} $\P$-time reductions or Karp reductions.
-Since we mainly use this type of reduction we omit ``many-to-one'' from the name and call them $\P$-time reductions. We say that two problem are $\P$-time equivalent if each of them $\P$-time reduces to the other. Aside from many-to-one reductions, we use the so-called Cook reductions. That is, we say that a decision problem $(I_1,D_1)$ is  {\em $\P$-time Cook  reducible} to  a problem $(I_2,D_2)$ if there is an algorithm that solves problem $(I_1,D_1)$ using a polynomial number of calls to a subroutine for problem $(I_2,D_2)$, and polynomial time outside of those subroutine calls. Correspondingly, we say that two problem are {\em $\P$-time Cook equivalent} if each of them $\P$-time Cook reduces to the other.
+Since we mainly use this type of reduction we omit ``many-to-one'' from the name and call them $\P$-time reductions. We say that two problem are $\P$-time equivalent if each of them $\P$-time reduces to the other. Aside from many-to-one reductions, we use the so-called Cook reductions. That is, we say that a decision problem $(I_1,D_1)$ is  {\em $\P$-time Cook  reducible} to  a problem $(I_2,D_2)$ if there is an algorithm that solves problem $(I_1,D_1)$ using a polynomial number of calls to a subroutine for problem $(I_2,D_2)$, and polynomial time outside of those subroutine calls. Correspondingly, we say that two problems are {\em $\P$-time Cook equivalent} if each of them $\P$-time Cook reduces to the other.
 
 It is not hard to see that for a problem $\Pi\in \{\SSP, \KP, \BKP, \SMP, \BSMP\}$, $\Pi(G,X_1)$ is $\P$-time equivalent to $\Pi(G,X_2)$ for any finite generating sets $X_1,X_2$, i.e. the time complexity of $\Pi(G)$ does not depend on the choice of a finite generating set of a given group $G$.
-For further information concerning knapsack-type problems and their variations in groups, details regarding their algorithmic set-up, and the corresponding basic facts the reader is referred to~\cite{Miasnikov-Nikolaev-Ushakov:2014a}.
+For further information concerning knapsack-type problems and their variations in groups, details regarding their algorithmic set-up, and the corresponding basic facts we refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a}.
 
 
 \subsection{Results and open questions}\label{sub:results}
@@ -215,8 +216,9 @@ Given an acyclic directed graph $\Gamma$ labeled by letters in $X\cup X^{-1}\cup
 \medskip
 Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$. Let total word length of labels of edges of $\Gamma$ be $l$. For a given instance of $\AGP(G,X)$, its {\em size} is the value $m+n+l$. With a slight abuse of terminology, we will also sometimes use labels that are words rather than letters in $X\cup X^{-1}\cup\{\varepsilon\}$. Doing so does not distort size of an instance of $\AGP(G,X)$ more than by a factor of $2$.
 
-Note that by a standard argument, if $X_1$ and $X_2$ are two finite generating sets for a group $G$, the problems $\AGP(G,X_1)$ and $\AGP(G,X_2)$ are $\P$-time equivalent. In this sense, the complexity  of $\AGP$ in a group $G$ does not depend on the choice of a finite generating set. In the sequel we often write $\AGP(G)$ instead of $\AGP(G,X)$, implying an arbitrary finite generating set.
-When infinite generating sets are concerned, the situation is more involved. We refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a} for details regarding treatment of infinite generating sets.
+Note that by a standard argument, if $X_1$ and $X_2$ are two finite generating sets for a group $G$, the problems $\AGP(G,X_1)$ and $\AGP(G,X_2)$ are $\P$-time (in fact, linear time) equivalent. In this sense, the complexity  of $\AGP$ in a group $G$ does not depend on the choice of a finite generating set. In the sequel we often write $\AGP(G)$ instead of $\AGP(G,X)$, implying an arbitrary finite generating set.
+We do not consider infinite generating sets in the present work, and refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a} for details of treating those.
+%When infinite generating sets are concerned, the situation is more involved. We refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a} for details regarding treatment of infinite generating sets.
 
 We make a note of the following obvious property of $\AGP$.
 
@@ -245,18 +247,48 @@ The statement follows immediately from~\cite[Proposition 5.5]{Miasnikov-Nikolaev
 Here we would also like to note that since the word problem straightforwardly reduces to $\AGP$, an obvious prerequisite for $\AGP(G)$ to belong to $\NP$ is to have a polynomial time word problem. Therefore, in the context of investigating time complexity of $\AGP$ we are primarily interested in such groups.
 
 We also note that adding or eliminating a direct factor $\mathbb Z$ does not change complexity of $\AGP$.
-\begin{proposition}\label{pr:kill_z}
-Let $G$ be a finitely generated group. Then $\AGP(G)$ and $\AGP(G\times \mathbb Z)$ are $\P$-time Cook equivalent.
-\end{proposition}
+%\begin{proposition}\label{pr:kill_z}
+%Let $G$ be a finitely generated group. Then $\AGP(G)$ and $\AGP(G\times \mathbb Z)$ are $\P$-time Cook equivalent.
+%\end{proposition}
+%\begin{proof}
+%
+%
+%Suppose $\Gamma$ is a given acyclic directed graph with edge labels $(w_1,n_1)$, $(w_2,n_2)$, $\ldots$, $(w_k,n_k)$. We compute $N=|n_1|+\ldots+|n_k|$ and consider graph $\Delta$ with vertex set $V(\Gamma)\times [-N,N]$.
+%
+%{\an Finish the proof!}
+%
+%\end{proof}
+
+
+
+
+\begin{theorem}\label{th:kill_z}
+Let $G$ be a finitely generated group. Then $\AGP(G)$ and $\AGP(G\times \mathbb Z)$ are $\P$-time equivalent.
+\end{theorem}
+
 \begin{proof}
 We only have to show the reduction of $\AGP(G\times\mathbb Z)$ to $\AGP(G)$, since the other direction is immediate by Proposition~\ref{pr:subgroup}.
 
-Suppose $\Gamma$ is a given acyclic directed graph with edge labels $(w_1,n_1)$, $(w_2,n_2)$, $\ldots$, $(w_k,n_k)$. We compute $N=|n_1|+\ldots+|n_k|$ and consider graph $\Delta$ with vertex set $V(\Gamma)\times [-N,N]$.
-
-{\an Finish the proof!}
-
+Consider an arbitrary instance $(\Gamma,\alpha,\omega)$ of $\AGP(G\times \mathbb Z)$, where $\Gamma = (V,E)$.
+%and $w = (g,n)$ is an element in $G\times\mathbb Z$.
+Consider a graph $\Gamma^\ast = (V^\ast,E^\ast)$, where $V^\ast = V\times \mathbb Z$ and
+$$
+E^\ast = \Set{(v,k) \stackrel{(h,m)}{\to} (v',k+m)}{\mbox{for every }(v,k) \in V^\ast \mbox{ and } v \stackrel{(h,m)}{\to} v' \in E}.
+$$
+Let $\Gamma'$ be the minimal connected component of $\Gamma^\ast$ containing $(\alpha,0) \in V^\ast$
+(or the subgraph of $\Gamma^\ast$ induced by all vertices in $\Gamma^\ast$ that can be reached from $(\alpha,0)$).
+It is easy to see that 
+$$|V'| \le |V| \cdot |E|.$$
+Moreover, the graph $\Gamma'$ can be constructed in a straightforward way in polynomial time.
+Finally, it follows from the construction of $\Gamma'$ that $(\Gamma,\alpha,\omega)$ is a positive instance
+of $\AGP(G\times \mathbb Z)$ if and only if 
+$(\Gamma',(\alpha,0),(\omega,0))$ is a positive instance of $\AGP(G)$.
 \end{proof}
 
+The above statement and Proposition~\ref{pr:agp_hyp} provide the following corollary.
+\begin{corollary}\label{co:F2xZ}
+$\AGP(F_2\times \mathbb Z) \in \P$, where $F_2$ is the free group with two free generators.
+\end{corollary}
 
 
 \subsection{Connection between acyclic graph problem and knapsack-type problems}
@@ -331,7 +363,7 @@ The proof repeats that of Proposition~\ref{pr:agp_to_ssp_star} with $G\times F_2
 \end{proof}
 
 \section{$\AGP$ and $\SSP$ in direct products.}\label{sec:direct_prod}
-While we show in Section~\ref{sec:direct_prod} that free product preserves polynomial time $\AGP$, the direct product of groups may change the complexity of $\AGP$ dramatically.
+We show in this section that the direct product of groups may change the complexity of $\AGP$ dramatically, in contrast with results of Section~\ref{sec:free_prod}.
 \begin{proposition}\label{pr:agp_cross}
 There exist groups $G,H$ such that $\AGP(G),\AGP(H)\in\P$, but $\AGP(G\times H)$ is $\NP$-complete.
 \end{proposition}
@@ -366,7 +398,7 @@ The latter proposition answers the question whether a direct product preserves p
 There exist finitely generated groups $G,H$ such that $\SSP(G)\in\P$, $\SSP(H)\in\P$ but $\SSP(G\times H)$ is $\NP$-complete.
 \end{corollary}
 \begin{proof}
-By Propositions~\ref{pr:agp_hyp} and~\ref{pr:kill_z}, $\AGP(F_2\times\mathbb Z)$ is $\P$-time. Therefore, $\SSP(F_2)$ and $\SSP(F_2\times\mathbb Z)$ are $\P$-time, while
+By Corollary~\ref{co:F2xZ}, $\AGP(F_2\times\mathbb Z)$ is $\P$-time. Therefore, $\SSP(F_2)$ and $\SSP(F_2\times\mathbb Z)$ are $\P$-time, while
 $\SSP(F_2\times (F_2\times \mathbb Z))$ is $\NP$-complete by the above result.
 \end{proof}
 In the light the above corollary, a natural question to ask is whether $\SSP(F_2\times \mathbb F_2)$ is $\NP$-complete.
@@ -409,10 +441,12 @@ If $G,H$ are finitely generated groups such that $\AGP(G)$, $\AGP(H)\in\P$ then 
 
 
 \begin{corollary}
-$\SSP$, $\BKP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite amount.
+$\SSP$, $\BKP$, $\BSMP$, $\AGP$ are polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite number.
 \end{corollary}
 
 \section{Knapsack problem in free products}\label{sec:knapsack}
+It is not clear whether the (unbounded) knapsack problem in general reduces to $\BKP$, or even $\AGP$. However, it was shown in~\cite{Miasnikov-Nikolaev-Ushakov:2014a} that in the case of hyperbolic groups there is indeed such reduction. In light of results of Section~\ref{sec:free_prod}, it is natural to ask whether a similar reduction takes place for free products of groups.
+
 For an element $f$ of a free product of groups $G*H$, let $\|f\|$ denote the {\em syllable length} of $f$, i.e. its geodesic length in generators $G\cup H$ of $G*H$. We say that $f$ is {\em \dumb} if $f$ can be conjugated by an element of $G*H$ into $G\cup H$, i.e.
 \begin{equation}\label{eq:simple}
 f=u^{-1}f'u,
@@ -486,10 +520,10 @@ It is only left to note that since for every $1\le \nu\le m$, either $f_\nu$ is 
 \begin{theorem}\label{th:ptime_kp}
 If $G,H$ are groups such that $\AGP(G)$, $\AGP(H)\in\P$ and $\KP(G)$, $\KP(H)\in\P$ then $\KP(G*H)\in\P$.
 \end{theorem}
-\begin{proof} By Proposition~\ref{pr:kp_to_bkp} $\KP(G*H)$ is $\P$-time Cook reducible to $\BKP(G*H)$. In turn, the latter is $\P$-time reducible to $\AGP(G*H)$ by Proposition~\ref{pr:reduction_to_agp}. Finally, $\AGP(G*H)\in\P$ by Corollary~\ref{cor:ptime_agp}.
+\begin{proof} By Proposition~\ref{pr:kp_to_bkp} $\KP(G*H)$ is $\P$-time reducible to $\BKP(G*H)$. In turn, the latter is $\P$-time reducible to $\AGP(G*H)$ by Proposition~\ref{pr:reduction_to_agp}. Finally, $\AGP(G*H)\in\P$ by Corollary~\ref{cor:ptime_agp}.
 \end{proof}
 \begin{corollary}
-$\KP$ is polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite amount.
+$\KP$ is polynomial time decidable in free products of finitely generated virtually nilpotent and hyperbolic groups in any finite number.
 \end{corollary}
 
 %\bibliography{../../main_bibliography}

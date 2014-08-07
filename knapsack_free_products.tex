@@ -194,14 +194,38 @@ For further information concerning knapsack-type problems and their variations i
 
 
 \subsection{Results and open questions}\label{sub:results}
-In the context of studying properties of the subset sum problem ($\SSP$) in free products, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$), % (see Section~\ref{sec:problems} for definitions),
+Primary goal of the present work is to answer the following basic questions about complexity of knapsack-type problems in free and direct products.
+\begin{itemize}
+\item[Q1] Assuming $\SSP(G),\SSP(H)\in\P$, is it true that $\SSP(G*H)\in\P$?
+\item[Q2] If the answer to the above question is positive, is it true that $\KP(G*H)\in\P$?
+\item[Q3,Q4] The same two questions about $G\times H$.
+\end{itemize}
+
+We give a partial positive answer to the question Q1. To elaborate, in the context of studying properties of the subset sum problem in free products, it is natural to view this problem, along with the bounded knapsack and the bounded submonoid membership problems, 
 as special cases of a more general algorithmic problem formulated in terms of graphs labeled by group elements, which we call the {\em acyclic graph problem} ($\AGP$), introduced in Section~\ref{sec:agp} below.
 
-We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$ and show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:agp_to_factors} that $\AGP$ in free products is $\P$-time Cook reducible to $\AGP$ in the factors. As an immediate consequence, we assert in Corollary~\ref{cor:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). We also show that knapsack problem ($\KP$) in a free product $\P$-time reduces to $\BKP$, which allows to conclude that, assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
+In the same section we also establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$, as shown in Figure~\ref{fi:reductions},
+\begin{figure}[h]
+ \centering
+ \includegraphics{reductions}
+ \caption{Connection between algorithmic problems. Arrows denote $\P$-time reductions.}\label{fi:reductions}
+\end{figure}
+and show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in %Theorem~\ref{th:agp_to_factors}
+Section~\ref{sec:free_prod} that $\AGP$ in free products is $\P$-time Cook reducible to $\AGP$ in the factors. % As an immediate consequence, we assert in Corollary~\ref{cor:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$.
+As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. As an answer to Q2, we show in Section~\ref{sec:knapsack} that the (unbounded) knapsack problem in a free product $\P$-time reduces to $\BKP$, which allows to conclude that, assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are. %(Theorem~\ref{th:ptime_kp}).
 
-In Propositions~\ref{pr:agp_to_ssp_star} and~\ref{pr:agp_to_ssp_cross}, we establish reduction of $\AGP$ to $\SSP$, albeit in a different group (augmented by a free or direct factor). As an application of this idea, in Proposition~\ref{pr:ssp_cross} we answer one of the starting questions of this paper by showing that direct product does not preserve polynomial $\SSP$ (unless $\P=\NP$). %, i.e. that there are groups $G,H$ such that $\SSP(G),\SSP(H)\in \P$, but $\SSP(G\times H)$ is $\NP$-complete (Corollary~\ref{cor:NP_complete_ssp_cross}).
+We observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). In Section~\ref{sec:direct_prod}
+%Proposition~\ref{pr:ssp_cross}
+we prove a similar result for $\SSP(G\times H)$, which negatively resolves question Q3.
 
-It remains an open question whether there is a group $G$ with $\SSP(G)\in\P$ and $\NP$-hard $\AGP(G)$.
+%In Propositions~\ref{pr:agp_to_ssp_star} and~\ref{pr:agp_to_ssp_cross}, we establish reduction of $\AGP$ to $\SSP$, albeit in a different group (augmented by a free or direct factor). As an application of this idea, in Proposition~\ref{pr:ssp_cross} we answer one of the starting questions of this paper by showing that direct product does not preserve polynomial $\SSP$ (unless $\P=\NP$).
+%, i.e. that there are groups $G,H$ such that $\SSP(G),\SSP(H)\in \P$, but $\SSP(G\times H)$ is $\NP$-complete (Corollary~\ref{cor:NP_complete_ssp_cross}).
+
+The following questions remain open.
+\begin{itemize}
+\item[OQ1] Is there a group $G$ with $\SSP(G)\in\P$ and $\NP$-hard $\AGP(G)$ (cf. results shown in Figure~\ref{fi:reductions})?
+\item[OQ2] Let $F_2$ be a free group of rank $2$. Is $\SSP(F_2\times F_2)$ $\NP$-complete (cf. Proposition~\ref{pr:ssp_cross})?
+\end{itemize}
 
 The authors are grateful to A.~Miasnikov for bringing our attention to problem and for insightful advice and discussions.
 
@@ -298,8 +322,10 @@ $(\Gamma',(\alpha,0),(\omega,0))$ is a positive instance of $\AGP(G)$.
 
 The above statement and Proposition~\ref{pr:agp_hyp} provide the following corollary.
 \begin{corollary}\label{co:F2xZ}
-$\AGP(F_2\times \mathbb Z) \in \P$, where $F_2$ is the rank $2$ free group.
+$\AGP(F_2\times \mathbb Z) \in \P$.
 \end{corollary}
+Here, and everywhere below, $F_2$ denotes the free group of rank $2$.
+
 {\li{I know we use it only with $F_2$, but are you sure you don't wan't to change it to arbitrary f.g. free group?}} {\an I think it's not worth it to have $F_n$ because $F_2\hookrightarrow F_n\hookrightarrow F_2$.}
 
 
@@ -334,10 +360,10 @@ Given Proposition~\ref{pr:reduction_to_agp} and results of~\cite{Miasnikov-Nikol
 %{\li{How to make this list more readable?} {\an For now we can use any list environment, any publisher will redo it to their standards anyway.}}{\li{For now, I'm happy with this one}}
 
 While it still remains to be seen whether $\AGP$ reduces to either of the problems in Proposition~\ref{pr:reduction_to_agp}, we make note of the following two observations. Firstly, in every case when it is known that those problems are $\P$-time, so is $\AGP$, as shown in Propositions~\ref{pr:agp_nilp} and~\ref{pr:agp_hyp}.
-The second observation is that for a given group $G$, $\AGP(G)$ $\P$-time reduces to either of the problems $\SSP(G\ast F_2)$ or $\SSP(G\times F_2)$, where $F_2$ is a free group of rank $2$.
+The second observation is that for a given group $G$, $\AGP(G)$ $\P$-time reduces to either of the problems $\SSP(G\ast F_2)$ or $\SSP(G\times F_2)$.
 
 \begin{proposition}\label{pr:agp_to_ssp_star}
-Let $G$ be a finitely generated group, $F_2$ be the free group of rank $2$. Then $\AGP(G)$ is $\P$-time reducible to $\SSP(G\ast F_2)$.
+Let $G$ be a finitely generated group. Then $\AGP(G)$ is $\P$-time reducible to $\SSP(G\ast F_2)$.
 \end{proposition}
 \begin{proof}
 Let $\Gamma$ be a given directed acyclic graph on $n$ vertices with edges labeled by group words in a generating set $X$ of the group $G$. We start by organizing a topological sorting on $\Gamma$, that is enumerating vertices of $\Gamma$ by symbols $V_1$ through $V_n$ so that if there is a path in $\Gamma$ from $V_i$ to $V_j$ then $i\le j$. This can be done in a time linear in $\size(\Gamma)$ by~\cite{Kahn}. We assume $\alpha=V_1$ and $\omega=V_n$, otherwise discarding unnecessary vertices. We perform a similar ordering of edges, i.e. we enumerate them by symbols $E_1,\ldots, E_m$ so that if there is a path in $\Gamma$ whose first edge is $E_i$ and the last edge $E_j$, then $i\le j$ (considering the derivative graph of $\Gamma$ we see that this can be done in time quadratic in $\size(\Gamma)$). For each edge $E_i$, $1\le i\le m$, denote its label by $u_i$, its origin by $V_{o(i)}$, and its terminus by $V_{t(i)}$. We similarly assume that $o(1)=1$ and $t(m)=n$.
@@ -377,7 +403,7 @@ i.e. edges $E_{i_1}, E_{i_2},\ldots, E_{i_k}$ for a path from $V_1$ to $V_n$ in 
 \end{proof}
 
 \begin{proposition}\label{pr:agp_to_ssp_cross}
-Let $G$ be a finitely generated group, $F_2$ be the free group of rank $2$. Then $\AGP(G)$ is $\P$-time reducible to $\SSP(G\times F_2)$.
+Let $G$ be a finitely generated group. Then $\AGP(G)$ is $\P$-time reducible to $\SSP(G\times F_2)$.
 \end{proposition}
 \begin{proof}
 The proof repeats that of Proposition~\ref{pr:agp_to_ssp_star} with $G\times F_2$ instead of $G\ast F_2$.
@@ -410,7 +436,7 @@ Let $G$ be a finitely generated group. Then $\BSMP(G)$ $\P$-time Cook reduces to
 
 We put $G=F_2\times F_2$ in the above Proposition~\ref{pr:bsmp_to_ssp} to obtain the following result.
 \begin{proposition}\label{pr:ssp_cross}
-Let $F_2$ be the free group of rank $2$. $\SSP(F_2\times F_2\times \mathbb Z)$ is $\NP$-complete.
+$\SSP(F_2\times F_2\times \mathbb Z)$ is $\NP$-complete.
 \end{proposition}
 \begin{proof}
 As we mentioned in the proof of Proposition~\ref{pr:agp_cross}, $\AGP(F_2\times F_2)$ is $\NP$-complete. By Proposition~\ref{pr:bsmp_to_ssp}, the latter $\P$-time Cook reduces to $\SSP((F_2\times F_2)\times\mathbb Z)$). Therefore, the $\SSP(F_2\times F_2\times \mathbb Z)$ is $\NP$-complete.

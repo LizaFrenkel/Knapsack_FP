@@ -101,7 +101,7 @@ In~\cite{Miasnikov-Nikolaev-Ushakov:2014a}, the authors introduce a number of ce
 %In this paper, following~\cite{Miasnikov-Nikolaev-Ushakov:2014a}  we continue the research on  non-commutative discrete (combinatorial) optimization. Specifically, we set out to study the properties of the subset sum problem in free products of groups.
 Solutions to many algorithmic problems carry over from groups to their free products without much difficulty. It certainly is the case with classical decision problems in groups such as the word, conjugacy~\cite{Lyndon-Schupp:2001} and membership~\cite{Mikhailova_68} problems. In some sense, the same expectations are satisfied with knapsack-type problems, albeit not in an entirely straightforward fashion. It turns out that knapsack-type problems such as the aforementioned subset sum problem, the bounded knapsack problem, and the bounded submonoid membership problem share a certain common ground that allows to approach these problems in a unified fashion, and to carry solutions of these problems over to free products. Thus, our research both presents certain known facts about these algorithmic problems in a new light, and widens the class of groups with known complexity of the knapsack-type problems.
 
-Algorithmic problems in a direct product of groups can be dramatically more complex than in either factor, as is the case with the membership problem, first shown by Mikhailova~\cite{Mikhailova}. By contrast, the word and conjugacy problems in direct products easily reduces to that in the factors. %{\li{Reference? \cite{Lyndon-Schupp:2001}?}}  {\an{I don't think we need one here.}}{\li{ok.}}
+Algorithmic problems in a direct product of groups can be dramatically more complex than in either factor, as is the case with the membership problem, first shown by Mikhailova~\cite{Mikhailova}. By contrast, the word and conjugacy problems in direct products easily reduce to those in the factors. %{\li{Reference? \cite{Lyndon-Schupp:2001}?}}  {\an{I don't think we need one here.}}{\li{ok.}}
 In Section~\ref{sec:direct_prod} we show that direct product does not preserve polynomial time subset sum problem (unless $\P=\NP$). Thus, the subset problem occupies an interesting position, exhibiting features of both word problem and membership problem; on the one hand, its decidability clearly carries immediately from factors to the direct product, while, on the other hand, its time complexity can increase dramatically. % The now-classic construction in the latter work was recently exploited in~\cite{Miasnikov-Nikolaev-Ushakov:2014a} to show that a direct product does not preserve polynomial time bounded submonoid membership problem, unless $\P=\NP$.
 
 
@@ -197,7 +197,7 @@ For further information concerning knapsack-type problems and their variations i
 In the context of studying properties of the subset sum problem ($\SSP$) in free products, it is natural to view this problem, along with the bounded knapsack problem ($\BKP$) and the bounded submonoid membership problem ($\BSMP$), % (see Section~\ref{sec:problems} for definitions),
 as special cases of a more general algorithmic problem formulated in terms of graphs labeled by group elements, which we call the {\em acyclic graph problem} ($\AGP$), introduced in Section~\ref{sec:agp} below.
 
-We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$ and show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:agp_to_factors} that $\AGP$ in free products is $\P$-time reducible to $\AGP$ in the factors. As an immediate consequence, we assert in Corollary~\ref{cor:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). We also show that knapsack problem ($\KP$) in a free product $\P$-time reduces to $\BKP$, which allows to conclude that, assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
+We establish connection between $\SSP$, $\BKP$, $\BSMP$ and $\AGP$ and show that $\AGP$ is $\P$-time solvable in all known groups where $\SSP$ is. Further, we show in Theorem~\ref{th:agp_to_factors} that $\AGP$ in free products is $\P$-time Cook reducible to $\AGP$ in the factors. As an immediate consequence, we assert in Corollary~\ref{cor:ptime_agp} that free products preserve polynomial time $\AGP$, i.e. $\AGP(G* H)\in\P$ if and only if $\AGP(G)\in\P$ and $\AGP(H)\in\P$. As a consequence, we obtain that $\SSP$, $\BKP$, $\BSMP$ are polynomial time solvable in a wide class of groups. We observe that the same is false for direct products, i.e. that $\AGP(G)\in\P$, $\AGP(H)\in\P$ does not imply $\AGP(G\times H)\in\P$ (unless $\P=\NP$). We also show that knapsack problem ($\KP$) in a free product $\P$-time reduces to $\BKP$, which allows to conclude that, assuming $\AGP(G)$, $\AGP(H)\in\P$, the knapsack problem $\KP(G*H)$ is $\P$-time solvable if and only if $\KP(G)$ and $\KP(H)$ are (Theorem~\ref{th:ptime_kp}).
 
 In Propositions~\ref{pr:agp_to_ssp_star} and~\ref{pr:agp_to_ssp_cross}, we establish reduction of $\AGP$ to $\SSP$, albeit in a different group (augmented by a free or direct factor). As an application of this idea, in Proposition~\ref{pr:ssp_cross} we answer one of the starting questions of this paper by showing that direct product does not preserve polynomial $\SSP$ (unless $\P=\NP$). %, i.e. that there are groups $G,H$ such that $\SSP(G),\SSP(H)\in \P$, but $\SSP(G\times H)$ is $\NP$-complete (Corollary~\ref{cor:NP_complete_ssp_cross}).
 
@@ -223,8 +223,8 @@ Let $G$ be a group and $X=\{x_1,\ldots,x_n\}$ a generating set for $G$.
 Given an acyclic directed graph $\Gamma$ labeled by letters in $X\cup X^{-1}\cup \{\varepsilon\}$ with two marked vertices, $\alpha$ and $\omega$, decide whether there is an oriented path in $\Gamma$ from $\alpha$ to $\omega$ labeled by a word $w$ such that $w=1$ in~$G$.
 
 \medskip
-Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$. Let total word length of labels of edges of $\Gamma$ be $l$. For a given instance of $\AGP(G,X)$, its {\em size} is the value $m+n+l$. With a slight abuse of terminology, we will also sometimes use labels that are words rather than letters in $X\cup X^{-1}\cup\{\varepsilon\}$. Doing so does not distort the size of an instance of $\AGP(G,X)$ by more than a factor of $2$, compared to the instance where only letters from $X\cup X^{-1}\cup\{\varepsilon\}$ are allowed as labels.
-{\li{I'm sorry, but I can't understand how it does not distort the size.}}
+Let graph $\Gamma$ have $n$ vertices and $m$ edges. Define $\size(\Gamma)$ to be $m+n$. Let total word length of labels of edges of $\Gamma$ be $l$. For a given instance of $\AGP(G,X)$, its {\em size} is the value $m+n+l$. With a slight abuse of terminology, we will also sometimes use labels that are words rather than letters in $X\cup X^{-1}\cup\{\varepsilon\}$. Note that given such a graph $\Gamma$ of size $m+n+l$, subdividing its edges we can obtain a graph $\Gamma'$ where edges are labeled by letters, with $m+n+l\le \size(\Gamma')\le (m+l)+(n+l)+l$. Therefore, $1/3\size(\Gamma')\le\size(\Gamma)\le \size(\Gamma')$, so such an abuse of terminology results in distorting the size of an instance of $\AGP(G,X)$ by a factor of at most $3$.
+{\li{I can't understand how it does not distort the size.}} {\an Should be fine now.}
 
 Note that by a standard argument, if $X_1$ and $X_2$ are two finite generating sets for a group $G$, the problems $\AGP(G,X_1)$ and $\AGP(G,X_2)$ are $\P$-time (in fact, linear time) equivalent. In this sense, the complexity  of $\AGP$ in a group $G$ does not depend on the choice of a finite generating set. In the sequel we often write $\AGP(G)$ instead of $\AGP(G,X)$, implying an arbitrary finite generating set.
 As shown in~\cite{Miasnikov-Nikolaev-Ushakov:2014a}, complexity of algorithmic problems in a group can change dramatically depending on a choice of infinite generating set. We do not consider infinite generating sets in the present work, and refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a} for details of treating those.
@@ -300,7 +300,7 @@ The above statement and Proposition~\ref{pr:agp_hyp} provide the following corol
 \begin{corollary}\label{co:F2xZ}
 $\AGP(F_2\times \mathbb Z) \in \P$, where $F_2$ is the rank $2$ free group.
 \end{corollary}
-{\li{I know we use it only with $F_2$, but are you sure you don't wan't to change it to arbitrary f.g. free group?}}
+{\li{I know we use it only with $F_2$, but are you sure you don't wan't to change it to arbitrary f.g. free group?}} {\an I think it's not worth it to have $F_n$ because $F_2\hookrightarrow F_n\hookrightarrow F_2$.}
 
 
 \subsection{Connection between acyclic graph problem and knapsack-type problems}
@@ -328,7 +328,7 @@ Given Proposition~\ref{pr:reduction_to_agp} and results of~\cite{Miasnikov-Nikol
 \item[--] Thompson's group $F$,
 \item[--] $F_2\times F_2$,
 \item[--] linear groups $GL(n, \mathbb Z)$ with $n\ge 4$,
-\item[--] braid groups $B_n$ with $n\ge 6$,
+\item[--] braid groups $B_n$ with $n\ge 5$ (by~\cite{Makanina}),
 \item[--] graph groups whose graph contains an induced square $C_4$.
 \end{itemize}
 %{\li{How to make this list more readable?} {\an For now we can use any list environment, any publisher will redo it to their standards anyway.}}{\li{For now, I'm happy with this one}}
@@ -340,7 +340,7 @@ The second observation is that for a given group $G$, $\AGP(G)$ $\P$-time reduce
 Let $G$ be a finitely generated group, $F_2$ be the free group of rank $2$. Then $\AGP(G)$ is $\P$-time reducible to $\SSP(G\ast F_2)$.
 \end{proposition}
 \begin{proof}
-Let $\Gamma$ be a given directed acyclic graph on $n$ vertices with edges labeled by group words in a generating set $X$ of the group $G$. We start by organizing a topological sorting on $\Gamma$, that is enumerating vertices of $\Gamma$ by symbols $V_1$ through $V_n$ so that if there is a path in $\Gamma$ from $V_i$ to $V_j$ then $i\le j$. This can be done in a time linear in $\size(\Gamma)$ by~\cite{Kahn}. We assume $\alpha=V_1$ and $\omega=V_n$, otherwise discarding unnecessary vertices. We perform a similar ordering of edges, i.e. we enumerate them by symbols $E_1,\ldots, E_m$ so that if there is a path in $\Gamma$ whose first edge is $E_i$ and the last edge $E_j$, then $i\le j$ (considering the dual to $\Gamma$ graph we see that this can be done in time quadratic in $\size(\Gamma)$). For each edge $E_i$, $1\le i\le m$, denote its label by $u_i$, its origin by $V_{o(i)}$, and its terminus by $V_{t(i)}$. We similarly assume that $o(1)=1$ and $t(m)=n$.
+Let $\Gamma$ be a given directed acyclic graph on $n$ vertices with edges labeled by group words in a generating set $X$ of the group $G$. We start by organizing a topological sorting on $\Gamma$, that is enumerating vertices of $\Gamma$ by symbols $V_1$ through $V_n$ so that if there is a path in $\Gamma$ from $V_i$ to $V_j$ then $i\le j$. This can be done in a time linear in $\size(\Gamma)$ by~\cite{Kahn}. We assume $\alpha=V_1$ and $\omega=V_n$, otherwise discarding unnecessary vertices. We perform a similar ordering of edges, i.e. we enumerate them by symbols $E_1,\ldots, E_m$ so that if there is a path in $\Gamma$ whose first edge is $E_i$ and the last edge $E_j$, then $i\le j$ (considering the derivative graph of $\Gamma$ we see that this can be done in time quadratic in $\size(\Gamma)$). For each edge $E_i$, $1\le i\le m$, denote its label by $u_i$, its origin by $V_{o(i)}$, and its terminus by $V_{t(i)}$. We similarly assume that $o(1)=1$ and $t(m)=n$.
 
 Next, we produce in polynomial time $n$ freely independent elements $v_1,\ldots, v_j$ of the free group $F_2= \langle x, y \rangle$, of which we think as labels of the corresponding vertices $V_1,\ldots, V_n$. For example, $v_j=x^jyx^j$, $j=1,\ldots,n$, suffice.
 We claim that
@@ -384,7 +384,7 @@ The proof repeats that of Proposition~\ref{pr:agp_to_ssp_star} with $G\times F_2
 \end{proof}
 
 \section{$\AGP$ and $\SSP$ in direct products.}\label{sec:direct_prod}
-We show in this section that the direct product of groups may change the complexity of $\SSP$ and $\AGP$ dramatically, in contrast with results of Section~\ref{sec:free_prod}, where we show that free products preserve the complexity of $\AGP$.
+We show in this section that direct product of groups may change the complexity of $\SSP$ and $\AGP$ dramatically, in contrast with results of Section~\ref{sec:free_prod}, where we show that free products preserve the complexity of $\AGP$.
 \begin{proposition}\label{pr:agp_cross}
 There exist groups $G,H$ such that $\AGP(G),\AGP(H)\in\P$, but $\AGP(G\times H)$ is $\NP$-complete.
 \end{proposition}
@@ -425,15 +425,17 @@ There exist finitely generated groups $G,H$ such that $\SSP(G)\in\P$, $\SSP(H)\i
 By Corollary~\ref{co:F2xZ}, $\AGP(F_2\times\mathbb Z)$ is in $\P$. Therefore, $\SSP(F_2)$ and $\SSP(F_2\times\mathbb Z)$ are in $\P$, while
 $\SSP(F_2\times (F_2\times \mathbb Z))$ is $\NP$-complete by the above result.
 \end{proof}
-In the light of the above corollary, a natural question to ask is whether $\SSP(F_2\times F_2)$ is $\NP$-complete.
-{\li{But we will answer another one, right?}} {\an I don't understand the question. Another one what?}{\li{We say, it's good to ask about $\SSP(F_2\times F_2)$, and then immediately change the subject.}}
 
 \begin{corollary}
-$\SSP$ is $\NP$-complete in braid groups $B_n$, $n\ge 8$, special linear groups $SL(n,\mathbb Z)$, $n\ge 5$, graph groups whose graph contains the square pyramid~$\boxtimes$ (also called the wheel graph~$W_5$) as an induced subgraph.
+$\SSP$ is $\NP$-complete in braid groups $B_n$, $n\ge 7$, special linear groups $SL(n,\mathbb Z)$, $n\ge 5$, graph groups whose graph contains the square pyramid~$\boxtimes$ (also called the wheel graph~$W_5$) as an induced subgraph.
 \end{corollary}
 \begin{proof}
-This follows from Propositions~\ref{pr:bsmp_to_ssp} and~\ref{pr:subgroup} since all of the listed groups contain $F_2\times F_2\times \mathbb Z$ as a subgroup.
+Note that $F_2\times F_2$ embeds in a braid group $B_n$ with $n\ge 5$ by a result of Makanina~\cite{Makanina}. The statement now follows from Propositions~\ref{pr:bsmp_to_ssp} and~\ref{pr:subgroup} since all of the listed groups contain $F_2\times F_2\times \mathbb Z$ as a subgroup.
 \end{proof}
+
+It remains to be seen whether $\SSP(F_2\times F_2)$ is $\NP$-complete.
+{\li{We say, it's good to ask about $\SSP(F_2\times F_2)$, and then immediately change the subject.}} {\an Ok now?}
+
 
 \section{$\AGP$ in free products}\label{sec:free_prod}
 \begin{theorem}\label{th:agp_to_factors}

@@ -228,7 +228,7 @@ The following questions remain open.
 \item[{\textbf{\textit{OQ2}}}] Let $F_2$ be a free group of rank $2$. Is $\SSP(F_2\times F_2)$ $\NP$-complete (cf. Proposition~\ref{pr:ssp_cross})?
 \end{itemize}
 
-The authors are grateful to A.~Miasnikov for bringing our attention to problem and for insightful advice and discussions.
+The authors are grateful to A.~Miasnikov for bringing our attention to the problem and for insightful advice and discussions.
 
 
 
@@ -519,11 +519,10 @@ f_1^{n_1}f_2^{n_2}\cdots f_m^{n_m}=f
 then there exist such integers $n_1,\ldots,n_m$ with
 $$n_i\le p(\|f_1\|+\|f_2\|+\ldots+\|f_m\|+\|f\|)\mbox{ whenever } f_i\mbox{ is \nondumb}.
 $$
-{\li{comments A}}
 %for each $i$ such that $f_i$ is \nondumb.
 \end{proposition}
-\begin{proof} For convenience, denote $\|f_1\|+\|f_2\|+\ldots+\|f_m\|+\|f\|=N$ and $f=f_0$, $-1=n_0$ ({\li{and $m \ge 2$}}).
-For each $f_i$ we represent $f_i^{n_i}$ by its normal form $w_i$, using Lemma~\ref{le:power} whenever $f_i$ is \nondumb\ and $n_i\ge 3$ ({\li{with $w_0 = f_0^{n_0}$, since $w_0$ is not in the statement. Or may be better to add that we use the standard normal form for the \dumb $f_i$ \ldots}}). Suppose that for some \nondumb\ $f_i$, $n_i \ge N^2+4N$. {\li{We need to say that if all $f_i$ are \dumb, then $n_i$ are bounded a priori. Also, I'd use $>$ instead of $\ge$ here, it does not affect inequalities below. }}  We inspect the path traversed by the word $w_1w_2\ldots w_mw_0$  in the Cayley graph of $G*H$ with respect to generators $G\cup H$. Since this word corresponds to the trivial group element, the path must be a loop and thus the word $w_i$ splits in at most $m$ pieces, each piece mutually canceling with a subword of $w_j$, $j\neq i$. Let $w_i=ab^{n_i-2}c$ as in Lemma~\ref{le:power}. Then by pigeonhole principle at least one piece contains at least $(n_i-2-m)/m\ge N+1$ copies of the word $b$. Observe that $f_j$ is \nondumb\ and $n_j\ge 3$, otherwise $\|f_j^{n_j}\|\le 2N$, so it cannot mutually cancel out with $b^{N+1}$ since $\|b^{N+1}\|\ge 2N+2$. Let $w_j=a'{b'}^{n_j-2}c'$. We note that $\|b\|\le \|f_i\|\le N$, $\|b'\|\le \|f_j\|\le N$, so $\|b'\|\le N$ copies of $b$ mutually cancel with $\|b'\|\cdot\|b\|/\|b'\|=\|b\|$ copies of $b'$ (up to a cyclic shift). Therefore replacing $n_i,n_j$ with $n_i-\|b'\|$ and $n_j-\|b\|$, respectively, preserves equality~\eqref{eq:big_powers}. This shows that {\li{, iterating the process above?,}}we may find numbers $n_1,\ldots, n_m$ that deliver equality~\eqref{eq:big_powers} such that $n_i\le p(N)=N^2+4N$ whenever $f_i$ is \nondumb.
+\begin{proof} For convenience, denote $\|f_1\|+\|f_2\|+\ldots+\|f_m\|+\|f\|=N$ and $f=f_0$, $-1=n_0$. {\li (and $m \ge 2$)?} {\an No need, as far as I can see.}
+For each $f_i$, $i=0,\ldots,m$, we represent $f_i^{n_i}$ by its normal form $w_i$, using Lemma~\ref{le:power} whenever $f_i$ is \nondumb\ and $n_i\ge 3$. Suppose that for some \nondumb\ $f_i$, $n_i > N^2+4N$. {\li We need to say that if all $f_i$ are \dumb, then $n_i$ are bounded a priori.} {\an No statement is made about powers of \dumb\ $f_i$. If they all are \dumb, then the statement is trivially true.}   We inspect the path traversed by the word $w_1w_2\ldots w_mw_0$  in the Cayley graph of $G*H$ with respect to generators $G\cup H$. Since this word corresponds to the trivial group element, the path must be a loop and thus the word $w_i$ splits in at most $m$ pieces, each piece mutually canceling with a subword of $w_j$, $j\neq i$. Let $w_i=ab^{n_i-2}c$ as in Lemma~\ref{le:power}. Then by pigeonhole principle at least one piece contains at least $(n_i-2-m)/m\ge N+1$ copies of the word $b$. Observe that $f_j$ is \nondumb\ and $n_j\ge 3$, otherwise $\|f_j^{n_j}\|\le 2N$, so it cannot mutually cancel with $b^{N+1}$ since $\|b^{N+1}\|\ge 2N+2$. Let $w_j=a'{b'}^{n_j-2}c'$. We note that $\|b\|\le \|f_i\|\le N$, $\|b'\|\le \|f_j\|\le N$, so $\|b'\|\le N$ copies of $b$ mutually cancel with $\|b'\|\cdot\|b\|/\|b'\|=\|b\|$ copies of $b'$ (up to a cyclic shift). Therefore replacing $n_i,n_j$ with $n_i-\|b'\|$ and $n_j-\|b\|$, respectively, preserves equality~\eqref{eq:big_powers}. Iterating this process, we may find numbers $n_1,\ldots, n_m$ that deliver equality~\eqref{eq:big_powers} such that $n_i\le p(N)=N^2+4N$ whenever $f_i$ is \nondumb.
 \end{proof}
 We observe that $p(N)=N^2+4N$ in the above proposition is monotone on $\mathbb{Z}_{\ge 0}$.
 

@@ -75,12 +75,12 @@ Moscow, Russia}
 
 
 
-\thanks{The work of the third author was partially supported by NSF grant DMS-0914773.}
+\thanks{The work of the third author was partially supported by NSF grant DMS-1318716.}
 
 
 \begin{document}
 \begin{abstract}
-We study complexity of the knapsack and related problems in free and direct products of groups.
+The classic knapsack and related problems have natural generalizations to arbitrary (non-commutative) groups, collectively called knapsack-type problems in groups. We study the effect of free and direct products on their time complexity. We show that free products in certain sense preserve time complexity of knapsack-type problems, while direct products may amplify it.
 
 \noindent
 {\bf Keywords.} Subset sum problem,  knapsack problem, bounded subgroup membership problem, free products, direct products, hyperbolic groups, nilpotent groups.
@@ -196,10 +196,10 @@ We refer the reader to~\cite{Miasnikov-Nikolaev-Ushakov:2014a} for the proof of 
 \subsection{Results and open questions}\label{sub:results}
 Primary goal of the present work is to answer the following basic questions about complexity of knapsack-type problems in free and direct products.
 \begin{itemize}
-\item[Q1] Assuming $\SSP(G),\SSP(H)\in\P$, is it true that $\SSP(G*H)\in\P$?
-\item[Q2] If the answer to the above question is positive, is it true that $\KP(G*H)\in\P$?
-\item[Q3] Assuming $\SSP(G),\SSP(H)\in\P$, is it true that $\SSP(G\times H)\in\P$?
-\item[Q4] If the answer to the above question is positive, is it true that $\KP(G\times H)\in\P$?
+\item[Q1.] Assuming $\SSP(G),\SSP(H)\in\P$, is it true that $\SSP(G*H)\in\P$?
+\item[Q2.] If the answer to the above question is positive, is it true that $\KP(G*H)\in\P$?
+\item[Q3.] Assuming $\SSP(G),\SSP(H)\in\P$, is it true that $\SSP(G\times H)\in\P$?
+\item[Q4.] If the answer to the above question is positive, is it true that $\KP(G\times H)\in\P$?
 \end{itemize}
 
 We give a partial positive answer to the question Q1. To elaborate, in the context of studying properties of the subset sum problem in free products, it is natural to view this problem, along with the bounded knapsack and the bounded submonoid membership problems,
@@ -224,8 +224,8 @@ we prove a similar result for $\SSP(G\times H)$, which negatively resolves quest
 
 The following questions remain open.
 \begin{itemize}
-\item[{\textbf{\textit{OQ1}}}] Is there a group $G$ with $\SSP(G)\in\P$ and $\NP$-hard $\AGP(G)$ (cf. results shown in Figure~\ref{fi:reductions})?
-\item[{\textbf{\textit{OQ2}}}] Let $F_2$ be a free group of rank $2$. Is $\SSP(F_2\times F_2)$ $\NP$-complete (cf. Proposition~\ref{pr:ssp_cross})?
+\item[OQ1.] Is there a group $G$ with $\SSP(G)\in\P$ and $\NP$-hard $\AGP(G)$ (cf. results shown in Figure~\ref{fi:reductions})?
+\item[OQ2.] Let $F_2$ be a free group of rank $2$. Is $\SSP(F_2\times F_2)$ $\NP$-complete (cf. Proposition~\ref{pr:ssp_cross})?
 \end{itemize}
 
 The authors are grateful to A.~Miasnikov for bringing our attention to the problem and for insightful advice and discussions.
@@ -378,11 +378,11 @@ is a positive instance of $\SSP(G\ast F_2)$ if and only if $\Gamma$ is positive 
 Indeed, suppose there is an edge path $E_{i_1}, \ldots, E_{i_k}$ from $\alpha=V_1$ to $\omega=V_n$ in $\Gamma$ with $u_{i_1}\cdots u_{i_k}=1$ in $G$. Note that since the above sequence of edges is a path, for each $1\le \mu\le k-1$, we have $V_{t(\mu)}=V_{o(\mu+1)}$, so $v_{t(\mu)}=v_{o(\mu+1)}$. Then the same choice of elements $g_{i_1},\ldots, g_{i_k}$ gives
 \begin{eqnarray*}
 g_{i_1}\cdots g_{i_k}&=&(v_{o(i_1)}u_{i_1}v_{t(i_1)}^{-1})
-(v_{o(i_2)}u_{i_2}v_{t(i_2)}^{-1})\cdots (v_{o(i_k)}u_{i_k}v_{t(i_k)}^{-1})=\\
-&&v_{o(i_1)}u_{i_1}(v_{t(i_1)}^{-1}
-v_{o(i_2)})u_{i_2}(v_{t(i_2)}^{-1}v_{o(i_3)})\cdots v_{o(i_k)}u_{i_k}v_{t(i_k)}^{-1}=\\
-&&v_{o(i_1)}u_{i_1}u_{i_2}\cdots u_{i_m}v_{t(i_k)}^{-1}=\\
-&&v_{o(i_1)}v_{t(i_k)}^{-1}=v_{1}v_{n}^{-1}=g.
+(v_{o(i_2)}u_{i_2}v_{t(i_2)}^{-1})\cdots (v_{o(i_k)}u_{i_k}v_{t(i_k)}^{-1})\\
+&=&v_{o(i_1)}u_{i_1}(v_{t(i_1)}^{-1}
+v_{o(i_2)})u_{i_2}(v_{t(i_2)}^{-1}v_{o(i_3)})\cdots v_{o(i_k)}u_{i_k}v_{t(i_k)}^{-1}\\
+&=&v_{o(i_1)}u_{i_1}u_{i_2}\cdots u_{i_m}v_{t(i_k)}^{-1}\\
+&=&v_{o(i_1)}v_{t(i_k)}^{-1}=v_{1}v_{n}^{-1}=g.
 \end{eqnarray*}
 In the opposite direction, suppose in $G\ast F_2$ the equality
 \begin{equation}\label{eq:ssp}
@@ -521,8 +521,8 @@ $$n_i\le p(\|f_1\|+\|f_2\|+\ldots+\|f_m\|+\|f\|)\mbox{ whenever } f_i\mbox{ is \
 $$
 %for each $i$ such that $f_i$ is \nondumb.
 \end{proposition}
-\begin{proof} For convenience, denote $\|f_1\|+\|f_2\|+\ldots+\|f_m\|+\|f\|=N$ and $f=f_0$, $-1=n_0$. {\li (and $m \ge 2$)?} {\an No need, as far as I can see.}
-For each $f_i$, $i=0,\ldots,m$, we represent $f_i^{n_i}$ by its normal form $w_i$, using Lemma~\ref{le:power} whenever $f_i$ is \nondumb\ and $n_i\ge 3$. Suppose that for some \nondumb\ $f_i$, $n_i > N^2+4N$. {\li We need to say that if all $f_i$ are \dumb, then $n_i$ are bounded a priori.} {\an No statement is made about powers of \dumb\ $f_i$. If they all are \dumb, then the statement is trivially true.}   We inspect the path traversed by the word $w_1w_2\ldots w_mw_0$  in the Cayley graph of $G*H$ with respect to generators $G\cup H$. Since this word corresponds to the trivial group element, the path must be a loop and thus the word $w_i$ splits in at most $m$ pieces, each piece mutually canceling with a subword of $w_j$, $j\neq i$. Let $w_i=ab^{n_i-2}c$ as in Lemma~\ref{le:power}. Then by pigeonhole principle at least one piece contains at least $(n_i-2-m)/m\ge N+1$ copies of the word $b$. Observe that $f_j$ is \nondumb\ and $n_j\ge 3$, otherwise $\|f_j^{n_j}\|\le 2N$, so it cannot mutually cancel with $b^{N+1}$ since $\|b^{N+1}\|\ge 2N+2$. Let $w_j=a'{b'}^{n_j-2}c'$. We note that $\|b\|\le \|f_i\|\le N$, $\|b'\|\le \|f_j\|\le N$, so $\|b'\|\le N$ copies of $b$ mutually cancel with $\|b'\|\cdot\|b\|/\|b'\|=\|b\|$ copies of $b'$ (up to a cyclic shift). Therefore replacing $n_i,n_j$ with $n_i-\|b'\|$ and $n_j-\|b\|$, respectively, preserves equality~\eqref{eq:big_powers}. Iterating this process, we may find numbers $n_1,\ldots, n_m$ that deliver equality~\eqref{eq:big_powers} such that $n_i\le p(N)=N^2+4N$ whenever $f_i$ is \nondumb.
+\begin{proof} For convenience, denote $\|f_1\|+\|f_2\|+\ldots+\|f_m\|+\|f\|=N$ and $f=f_0$, $-1=n_0$.
+For each $f_i$, $i=0,\ldots,m$, we represent $f_i^{n_i}$ by its normal form $w_i$, using Lemma~\ref{le:power} whenever $f_i$ is \nondumb\ and $n_i\ge 3$. Suppose that for some \nondumb\ $f_i$, $n_i > N^2+4N$. We inspect the path traversed by the word $w_1w_2\ldots w_mw_0$  in the Cayley graph of $G*H$ with respect to generators $G\cup H$. Since this word corresponds to the trivial group element, the path must be a loop and thus the word $w_i$ splits in at most $m$ pieces, each piece mutually canceling with a subword of $w_j$, $j\neq i$. Let $w_i=ab^{n_i-2}c$ as in Lemma~\ref{le:power}. Then by pigeonhole principle at least one piece contains at least $(n_i-2-m)/m\ge N+1$ copies of the word $b$. Observe that $f_j$ is \nondumb\ and $n_j\ge 3$, otherwise $\|f_j^{n_j}\|\le 2N$, so it cannot mutually cancel with $b^{N+1}$ since $\|b^{N+1}\|\ge 2N+2$. Let $w_j=a'{b'}^{n_j-2}c'$. We note that $\|b\|\le \|f_i\|\le N$, $\|b'\|\le \|f_j\|\le N$, so $\|b'\|\le N$ copies of $b$ mutually cancel with $\|b'\|\cdot\|b\|/\|b'\|=\|b\|$ copies of $b'$ (up to a cyclic shift). Therefore replacing $n_i,n_j$ with $n_i-\|b'\|$ and $n_j-\|b\|$, respectively, preserves equality~\eqref{eq:big_powers}. Iterating this process, we may find numbers $n_1,\ldots, n_m$ that deliver equality~\eqref{eq:big_powers} such that $n_i\le p(N)=N^2+4N$ whenever $f_i$ is \nondumb.
 \end{proof}
 We observe that $p(N)=N^2+4N$ in the above proposition is monotone on $\mathbb{Z}_{\ge 0}$.
 
@@ -536,10 +536,10 @@ g_1h_1g_2h_2\cdots g_\ell h_\ell=1,
 \end{equation}
 where each $g_i\in G$ and each $h_i\in H$, and $\ell\le \|f\|+m\cdot (\max\{\|f_i\|\})\cdot p(\max\{\|f_i\|\})$ by Proposition~\ref{pr:big_power}, so $\ell\le N^2p(N)$ where $N$ is the total length of the input (i.e. the sum of word lengths of $f_1,$ \ldots, $f_m,$ $f$). Further, since the product in~\eqref{eq:norm_form} represents the trivial element, it can be reduced to $1$ by a series of eliminations of trivial syllables and combining like terms:
 \begin{align*}
-g_1h_1g_2h_2\cdots g_\ell h_\ell&=\\
-g_1^{(1)}h_1^{(1)}\cdots g_\ell^{(1)}h_\ell^{(1)}&=\\
-g_1^{(2)}h_1^{(2)}\cdots g_{\ell-1}^{(2)}h_{\ell-1}^{(2)}&=\\
-\ldots=g_1^{(\ell)}h_1^{(\ell)}&=1,\\
+g_1h_1g_2h_2\cdots g_\ell h_\ell&=g_1^{(1)}h_1^{(1)}\cdots g_\ell^{(1)}h_\ell^{(1)}\\
+%&=g_1^{(1)}h_1^{(1)}\cdots g_\ell^{(1)}h_\ell^{(1)}\\
+&=g_1^{(2)}h_1^{(2)}\cdots g_{\ell-1}^{(2)}h_{\ell-1}^{(2)}\\
+&=\ldots=g_1^{(\ell)}h_1^{(\ell)}=1,\\
 \end{align*}
 where the product labeled by $(j)$ is obtained from the one labeled by $(j-1)$ by a single elimination of a trivial term and combining the two (cyclically) neighboring terms. Observe that each $g_i^{(j)}$ is (up to a cyclic shift) a product of the form $g_\alpha g_{\alpha+1}\cdots g_\beta$; similarly for $h_i^{(j)}$. Therefore, each $g_i^{(j)}$ is of the form
 \begin{equation}\label{eq:g_ij}
